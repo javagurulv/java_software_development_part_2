@@ -2,6 +2,7 @@ include 'student_lastname_firstname'
 
 
 include 'teacher:step_0'
+include 'teacher:step_1'
 
 
 include 'teacher:step_utils'
