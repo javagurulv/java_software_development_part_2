@@ -85,7 +85,9 @@ JAR, WAR,
 JSON, XML, 
 Docker, containers,
 MySQL, networks,
-message broker, RabbitMQ, ...
+message broker, RabbitMQ,
+Elastic, Prometheus, metrics,
+Grafana, ...
 
 ---------------------
 
