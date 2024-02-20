@@ -5,6 +5,7 @@ include 'teacher:step_0'
 include 'teacher:step_1'
 include 'teacher:step_2'
 include 'teacher:step_3'
+include 'teacher:step_4'
 
 
 include 'teacher:step_utils'
