@@ -21,3 +21,17 @@ docker pull mysql:8.0
 Удаление локального образа по названию и тегу:
 
 docker rmi mysql:8.0
+
+
+Remove Dangling Images: Dangling images are layers that
+have no relationship to any tagged images. They often
+consume disk space and can be safely removed. To remove
+all dangling images, you can use:
+
+docker image prune
+
+
+Remove All Unused Images: To remove all images that
+are not used by any container (not just dangling ones), you can use:
+
+docker image prune -a
