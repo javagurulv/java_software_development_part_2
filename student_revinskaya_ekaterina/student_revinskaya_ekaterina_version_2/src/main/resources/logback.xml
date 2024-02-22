@@ -1,10 +1,10 @@
 <configuration>
 
-    <property name="LOGS" value="D:/bsu-java-internship-2023/student_revinskaya_ekaterina_version_2/logs" />
+    <property name="LOGS" value="./logs" />
 
-    <property name="LOGS_V1" value="D:/bsu-java-internship-2023/student_revinskaya_ekaterina_version_2/logs/logsV1" />
+    <property name="LOGS_V1" value="./logs/logsV1" />
 
-    <property name="LOGS_V2" value="D:/bsu-java-internship-2023/student_revinskaya_ekaterina_version_2/logs/logsV2" />
+    <property name="LOGS_V2" value="./logs/logsV2" />
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>

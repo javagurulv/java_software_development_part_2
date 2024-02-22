@@ -13,6 +13,7 @@ include 'teacher:step_7'
 include 'teacher:step_8'
 include 'teacher:step_9'
 include 'teacher:step_10'
+include 'teacher:step_11'
 
 
 include 'teacher:step_utils'
