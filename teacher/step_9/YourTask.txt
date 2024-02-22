@@ -12,7 +12,7 @@
 insurance-calc-db.
 
 Все это можно сделать командой:
-docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=javaguru MYSQL_DATABASE=insurance-calc-db -p 3000:3306 -d mysql:8.0
+docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=javaguru -e MYSQL_DATABASE=insurance-calc-db -p 3000:3306 -d mysql:8.0
 
 docker run [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG...]
 
