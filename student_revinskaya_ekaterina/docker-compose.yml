@@ -31,3 +31,12 @@ services:
     depends_on:
       - db
       - message-broker
+
+  consumer:
+     networks: [ javaguru ]
+     container_name: consumer-container
+     image: consumer
+     ports:
+       - "8888:8888"
+     depends_on:
+       - message-broker
