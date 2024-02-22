@@ -1,5 +1,6 @@
 include 'student_lastname_firstname'
-
+include 'student_revinskaya_ekaterina:student_revinskaya_ekaterina_version_2'
+include 'student_revinskaya_ekaterina:student_revinskaya_ekaterina_consumer'
 
 include 'teacher:step_0'
 include 'teacher:step_1'
@@ -15,3 +16,4 @@ include 'teacher:step_10'
 
 
 include 'teacher:step_utils'
+
