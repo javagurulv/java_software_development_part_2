@@ -1,6 +1,10 @@
 plugins {
 	id 'org.springframework.boot' version "2.7.5"
 	id 'com.palantir.docker' version '0.35.0'
+	id 'checkstyle'
+}
+checkstyle {
+	configFile = 'config/checkstyle/checkstyle.xml' as File
 }
 
 dependencies {
