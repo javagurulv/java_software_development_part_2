@@ -1,21 +1,12 @@
-Последовательность выполнения Gradle задач и зависимости между ними.
+Spring Default Profile!
 
-В прошлых заданиях мы добавили в проект Gradle docker задача
-для создания Docker image для нашего приложения.
+The spring.profiles.default property in Spring applications
+is used to specify the default profile(s) that should be active
+if no other profiles are activated through environment variables,
+JVM arguments, or other means. This property can be particularly
+useful for setting a base configuration that your application
+should run with under normal circumstances, while still allowing
+you to override it with specific profiles for different environments
+(e.g., development, test, production).
 
-Если выполнить команду Gradle clean которая удаляет все Gradle
-артефакты созданные им при сборке проекта в папке build (в том
-числе и jar файл приложения), а потом сразу выполнить команду
-Gradle docker, то она упадет так как в папке build не будет
-jar файла приложения.
-
-Ваша задача: сделайте так, чтобы Gradle docker задача зависела
-от Gradle bootJar (то есть выполнялась после нее). Для этого
-воспользуйтесь параметром dependsOn, который есть у каждой Gradle задачи.
-Если вы все сделаете правильно, то перед выполнением Gradle docker
-всегда будет выполняться задача Gradle bootJar, которая и будет
-создавать jar файл, этот jar файл потом будет использовать
-Gradle docker для создания Docker image.
-
-В этом шаге мы узнали как с помощью параметра
-dependsOn можно выстраивать зависимости между Gradle задачами.
+Ваша задача: установите дефолтный профайл с H2 базой.

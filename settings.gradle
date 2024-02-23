@@ -21,6 +21,7 @@ include 'teacher:step_14'
 include 'teacher:step_15'
 include 'teacher:step_16'
 include 'teacher:step_17'
+include 'teacher:step_18'
 
 
 include 'teacher:step_utils'
