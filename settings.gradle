@@ -1,6 +1,7 @@
 include 'student_lastname_firstname'
-include 'student_revinskaya_ekaterina:student_revinskaya_ekaterina_version_2'
-include 'student_revinskaya_ekaterina:student_revinskaya_ekaterina_consumer'
+include 'revinskaya_ekaterina:insurance_calculator_app'
+include 'revinskaya_ekaterina:doc_generator_app'
+
 include 'student_tarasova_oksana:travel_insurance_calculator'
 
 include 'teacher:step_0'
@@ -15,6 +16,8 @@ include 'teacher:step_8'
 include 'teacher:step_9'
 include 'teacher:step_10'
 include 'teacher:step_11'
+include 'teacher:step_12'
+
 
 
 include 'teacher:step_utils'
