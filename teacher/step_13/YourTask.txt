@@ -9,4 +9,5 @@ should run with under normal circumstances, while still allowing
 you to override it with specific profiles for different environments
 (e.g., development, test, production).
 
-Ваша задача: установите дефолтный профайл с H2 базой.
+Ваша задача: установите дефолтный профайл с H2 базой
+как для приложения, так и для тестов.
