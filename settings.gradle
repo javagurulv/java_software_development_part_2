@@ -24,5 +24,8 @@ include 'teacher:step_17'
 include 'teacher:step_18'
 
 
+include 'teacher:step_19_rabbitmq_example'
+
+
 include 'teacher:step_utils'
 
