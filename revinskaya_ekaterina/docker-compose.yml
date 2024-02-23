@@ -32,11 +32,11 @@ services:
       - db
       - message-broker
 
-  consumer:
+  doc-generator:
      networks: [ javaguru ]
-     container_name: consumer-container
-     image: consumer
+     container_name: document-generator-container
+     image: document-generator
      ports:
        - "8888:8888"
      depends_on:
-       - message-broker
+       - web
