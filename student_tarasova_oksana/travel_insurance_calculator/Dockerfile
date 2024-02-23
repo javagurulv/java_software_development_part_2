@@ -1,5 +1,5 @@
 FROM openjdk:18-jdk-alpine
-COPY insurance-calculator-1.0.2.jar insurance-calculator.jar
+COPY insurance-calc-1.0.2.jar insurance-calc.jar
 ENTRYPOINT ["java"]
-CMD ["-jar", "insurance-calculator.jar"]
+CMD ["-jar", "insurance-calc.jar"]
 EXPOSE 8080
