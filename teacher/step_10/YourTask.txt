@@ -1,0 +1,40 @@
+Учимся работать с сетью!
+
+Сеть (network) это важный элемент ИТ экосистемы.
+Она обеспечивает возможность взаимодействия между приложениями.
+
+Посмотреть все доступные на локальном компьютере сети
+можно выполнив команду:
+
+docker network ls
+
+NETWORK ID     NAME       DRIVER    SCOPE
+22bc1d4900a3   bridge     bridge    local
+ac887d218956   host       host      local
+ba02630dcb1b   javaguru   bridge    local
+806a6de979d5   none       null      local
+
+
+Для создания виртуальной сети используется команда:
+
+docker network create javaguru-network
+
+
+Для удаления виртуальной сети используется команда:
+
+docker network rm javaguru-network
+
+
+Verify the Container is Running and Connected to the Network:
+
+
+docker network inspect javaguru-network
+
+
+This command provides detailed information about the network,
+including which containers are connected to it.
+
+
+Ваша задача: создайте виртуальную сеть javaguru-network.
+В следующих заданиях мы будем использовать эту сеть для
+запуска контейнеров.
