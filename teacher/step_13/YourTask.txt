@@ -1,0 +1,13 @@
+Spring Default Profile!
+
+The spring.profiles.default property in Spring applications
+is used to specify the default profile(s) that should be active
+if no other profiles are activated through environment variables,
+JVM arguments, or other means. This property can be particularly
+useful for setting a base configuration that your application
+should run with under normal circumstances, while still allowing
+you to override it with specific profiles for different environments
+(e.g., development, test, production).
+
+Ваша задача: установите дефолтный профайл с H2 базой
+как для приложения, так и для тестов.

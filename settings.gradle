@@ -1,6 +1,7 @@
 include 'student_lastname_firstname'
 include 'revinskaya_ekaterina:insurance_calculator_app'
 include 'revinskaya_ekaterina:doc_generator_app'
+include 'student_cekalins_andrejs:insurance_calculator_v2'
 
 include 'student_tarasova_oksana:travel_insurance_calculator'
 
@@ -17,6 +18,15 @@ include 'teacher:step_9'
 include 'teacher:step_10'
 include 'teacher:step_11'
 include 'teacher:step_12'
+include 'teacher:step_13'
+include 'teacher:step_14'
+include 'teacher:step_15'
+include 'teacher:step_16'
+include 'teacher:step_17'
+include 'teacher:step_18'
+
+
+include 'teacher:step_19_rabbitmq_example'
 
 
 
