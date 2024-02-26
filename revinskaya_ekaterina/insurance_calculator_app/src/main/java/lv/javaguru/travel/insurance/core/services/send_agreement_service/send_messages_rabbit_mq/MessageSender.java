@@ -13,7 +13,7 @@ public class MessageSender {
     private RabbitTemplate rabbit;
 
     public void sendAgreement(AgreementDTO agreementDTO) {
-        rabbit.convertAndSend("agreement.exchanger", "agreement", agreementDTO);
+        //rabbit.convertAndSend("agreement.exchanger", "agreement", agreementDTO);
     }
 
 }
