@@ -25,7 +25,7 @@ services:
   web:
     networks: [javaguru]
     container_name: insurance-calc-container
-    image: insurance-calculator
+    image: insurance-calculator:1.0.3
     ports:
       - "8080:8080"
     depends_on:
@@ -34,9 +34,9 @@ services:
 
   doc-generator:
      networks: [javaguru]
-     container_name: document-generator-container
-     image: document-generator
+     container_name: doc-generator-container
+     image: doc-generator:1.0.2
      ports:
        - "8888:8888"
      depends_on:
-       - web
+       - message-broker

@@ -1,6 +1,6 @@
 plugins {
 	id 'org.springframework.boot' version "2.7.5"
-	id "com.palantir.docker" version "0.35.0"
+	id 'com.palantir.docker' version '0.35.0'
 }
 dependencies {
 
@@ -18,17 +18,20 @@ dependencies {
 	}
 
 }
+
 jar {
 	enabled = false
-}
-docker {
-	name "doc_generator-1.0.2.jar"
-	files 'build/libs/doc_generator-1.0.2.jar'
-	buildArgs(['JAR_FILE': "doc_generator-1.0.2.jar"])
 }
 
 bootJar {
 	enabled = true
-	archiveBaseName = 'doc_generator'
+	archiveBaseName = 'doc-generator'
 	archiveVersion = '1.0.2'
+}
+
+docker {
+	dependsOn bootJar
+	name "doc-generator:1.0.2"
+	files 'build/libs/doc-generator-1.0.2.jar'
+	buildArgs(['JAR_FILE': "doc-generator-1.0.2.jar"])
 }

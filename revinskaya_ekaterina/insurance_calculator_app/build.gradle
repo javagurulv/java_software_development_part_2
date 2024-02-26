@@ -1,7 +1,8 @@
 plugins {
 	id 'org.springframework.boot' version "2.7.5"
-//	id "com.palantir.docker" version "0.35.0"
+	id 'com.palantir.docker' version "0.35.0"
 }
+
 dependencies {
 	implementation ('org.apache.ant:ant:1.10.11')
 	implementation ('org.springdoc:springdoc-openapi-ui:1.6.4')
@@ -52,13 +53,15 @@ bootJar {
 	archiveVersion = '1.0.3'
 }
 
-//docker {
-//	name "insurance-calculator:1.0.3"
-//	files 'build/libs/insurance-calculator-1.0.3.jar', 'wait-for-it.sh'
-//	buildArgs(['JAR_FILE': "insurance-calculator-1.0.3.jar"])
-//}
-
 task cleanLogs(type: Delete) {
 	delete "${projectDir}/logs/"
 }
 clean.dependsOn(cleanLogs)
+
+docker {
+	dependsOn bootJar
+	name "insurance-calculator:1.0.3"
+	files 'build/libs/insurance-calculator-1.0.3.jar'
+	files 'wait-for-it.sh'
+	buildArgs(['JAR_FILE': "insurance-calculator-1.0.3.jar"])
+}
