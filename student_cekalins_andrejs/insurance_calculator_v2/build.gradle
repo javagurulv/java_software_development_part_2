@@ -1,5 +1,6 @@
 plugins {
 	id 'org.springframework.boot' version "2.7.5"
+	id 'com.palantir.docker' version '0.35.0'
 }
 
 dependencies {
@@ -52,4 +53,9 @@ bootJar {
 clean.doFirst {
 	delete "${projectDir}/logs/"
 	println "${projectDir}/logs/"
+}
+docker {
+	name "insurance-calculator:1.0.2"
+	files 'build/libs/insurance-calculator-1.0.2.jar'
+	buildArgs(['JAR_FILE': "insurance-calculator-1.0.2.jar"])
 }
