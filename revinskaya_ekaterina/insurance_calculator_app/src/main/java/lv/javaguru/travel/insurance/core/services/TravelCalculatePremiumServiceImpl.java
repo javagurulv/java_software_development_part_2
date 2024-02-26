@@ -49,7 +49,7 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
         policySaver.savePolicy(agreementDTO);
         TravelCalculatePremiumCoreResult coreResult = new TravelCalculatePremiumCoreResult();
         coreResult.setAgreement(agreementDTO);
-        sendAgreementService.sendAgreement(agreementDTO);
+        //sendAgreementService.sendAgreement(agreementDTO);
         return coreResult;
     }
 
