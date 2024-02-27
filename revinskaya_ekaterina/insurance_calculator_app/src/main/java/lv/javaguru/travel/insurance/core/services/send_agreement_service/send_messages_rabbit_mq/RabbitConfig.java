@@ -1,4 +1,4 @@
-package lv.javaguru.travel.insurance.rest.send_messages_rabbit_mq;
+package lv.javaguru.travel.insurance.core.services.send_agreement_service.send_messages_rabbit_mq;
 
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;

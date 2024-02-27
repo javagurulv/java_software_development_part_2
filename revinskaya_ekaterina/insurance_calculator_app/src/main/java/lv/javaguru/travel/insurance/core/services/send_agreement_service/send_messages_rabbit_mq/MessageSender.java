@@ -1,4 +1,4 @@
-package lv.javaguru.travel.insurance.rest.send_messages_rabbit_mq;
+package lv.javaguru.travel.insurance.core.services.send_agreement_service.send_messages_rabbit_mq;
 
 import lv.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -13,7 +13,7 @@ public class MessageSender {
     private RabbitTemplate rabbit;
 
     public void sendAgreement(AgreementDTO agreementDTO) {
-        //rabbit.convertAndSend("agreement.exchanger", "agreement", agreementDTO);
+        rabbit.convertAndSend("agreement.exchanger", "agreement", agreementDTO);
     }
 
 }
