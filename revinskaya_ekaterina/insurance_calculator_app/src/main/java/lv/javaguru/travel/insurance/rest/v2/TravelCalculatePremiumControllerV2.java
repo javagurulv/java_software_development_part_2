@@ -8,7 +8,6 @@ import lv.javaguru.travel.insurance.dto.v2.DtoV2Converter;
 import lv.javaguru.travel.insurance.dto.v2.TravelCalculatePremiumRequestV2;
 import lv.javaguru.travel.insurance.dto.v2.TravelCalculatePremiumResponseV2;
 import lv.javaguru.travel.insurance.rest.TravelCalculateRequestExecutionTimeLogger;
-import lv.javaguru.travel.insurance.rest.send_messages_rabbit_mq.MessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,8 +30,6 @@ class TravelCalculatePremiumControllerV2 {
     private TravelCalculateRequestExecutionTimeLogger requestExecutionTimeLogger;
     @Autowired
     private DtoV2Converter dtoV2Converter;
-    @Autowired
-    private MessageSender messageSender;
 
     @PostMapping(path = "/",
             consumes = "application/json",
@@ -48,7 +45,7 @@ class TravelCalculatePremiumControllerV2 {
         loggerForResponse.log(response);
         requestExecutionTimeLogger.log(stopwatch.elapsed().toMillis());
 
-        messageSender.sendAgreement(result.getAgreement());
+
         
         return response;
     }
