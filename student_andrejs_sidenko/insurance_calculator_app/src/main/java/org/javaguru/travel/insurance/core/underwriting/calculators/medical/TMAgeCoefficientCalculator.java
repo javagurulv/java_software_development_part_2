@@ -1,5 +1,10 @@
 package org.javaguru.travel.insurance.core.underwriting.calculators.medical;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.domain.TMAgeCoefficient;
 import org.javaguru.travel.insurance.core.repositories.TMAgeCoefficientRepository;
@@ -7,11 +12,7 @@ import org.javaguru.travel.insurance.core.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
-import java.util.Date;
+
 
 @Component
 class TMAgeCoefficientCalculator {

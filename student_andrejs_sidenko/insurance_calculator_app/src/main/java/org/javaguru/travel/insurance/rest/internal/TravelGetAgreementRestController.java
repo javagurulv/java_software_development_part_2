@@ -20,8 +20,7 @@ public class TravelGetAgreementRestController {
 	@Autowired private TravelGetAgreementService getAgreementService;
 	@Autowired private GetAgreementDtoConverter dtoConverter;
 
-	@GetMapping(path = "/{uuid}",
-			produces = "application/json")
+	@GetMapping(path = "/{uuid}", produces = "application/json")
 	public TravelGetAgreementResponse getAgreement(@PathVariable String uuid) {
 		Stopwatch stopwatch = Stopwatch.createStarted();
 		TravelGetAgreementResponse response = processRequest(uuid);

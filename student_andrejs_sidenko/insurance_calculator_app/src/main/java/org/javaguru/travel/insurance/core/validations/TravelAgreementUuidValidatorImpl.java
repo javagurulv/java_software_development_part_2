@@ -1,12 +1,13 @@
 package org.javaguru.travel.insurance.core.validations;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementEntityRepository;
 import org.javaguru.travel.insurance.core.util.Placeholder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Component
 class TravelAgreementUuidValidatorImpl implements TravelAgreementUuidValidator {

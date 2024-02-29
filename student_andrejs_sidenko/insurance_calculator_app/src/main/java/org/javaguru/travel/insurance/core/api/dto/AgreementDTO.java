@@ -1,14 +1,16 @@
 package org.javaguru.travel.insurance.core.api.dto;
 
-import javax.xml.bind.annotation.XmlRootElement;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.Builder;
+
 
 
 @Getter

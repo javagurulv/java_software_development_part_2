@@ -1,19 +1,16 @@
 package org.javaguru.travel.insurance.core.underwriting.calculators.cancellation;
 
+import java.math.BigDecimal;
+import java.util.Optional;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.domain.TCTravelCostCoefficient;
 import org.javaguru.travel.insurance.core.repositories.TCTravelCostCoefficientRepository;
-import org.javaguru.travel.insurance.core.underwriting.calculators.cancellation.TCTravelCostCoefficientCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.math.BigDecimal;
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;

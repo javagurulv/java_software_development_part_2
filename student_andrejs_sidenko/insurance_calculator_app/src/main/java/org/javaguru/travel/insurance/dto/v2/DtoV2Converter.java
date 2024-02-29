@@ -1,5 +1,8 @@
 package org.javaguru.travel.insurance.dto.v2;
 
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCoreCommand;
 import org.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCoreResult;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
@@ -9,9 +12,7 @@ import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.dto.RiskPremium;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.springframework.stereotype.Component;
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Component
 public class DtoV2Converter {

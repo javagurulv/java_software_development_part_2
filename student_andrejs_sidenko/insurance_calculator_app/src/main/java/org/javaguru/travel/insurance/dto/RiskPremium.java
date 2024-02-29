@@ -1,12 +1,13 @@
 package org.javaguru.travel.insurance.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.javaguru.travel.insurance.dto.util.BigDecimalSerializer;
-import java.math.BigDecimal;
+
 
 @Getter
 @Setter

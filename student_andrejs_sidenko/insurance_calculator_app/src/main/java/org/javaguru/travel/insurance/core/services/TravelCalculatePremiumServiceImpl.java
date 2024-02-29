@@ -1,5 +1,6 @@
 package org.javaguru.travel.insurance.core.services;
 
+import java.util.List;
 import org.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCoreCommand;
 import org.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCoreResult;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
@@ -9,7 +10,7 @@ import org.javaguru.travel.insurance.core.validations.TravelAgreementValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.List;
+
 
 @Component
 @Transactional

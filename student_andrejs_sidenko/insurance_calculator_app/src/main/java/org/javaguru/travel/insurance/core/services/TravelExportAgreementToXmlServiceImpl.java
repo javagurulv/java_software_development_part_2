@@ -1,5 +1,10 @@
 package org.javaguru.travel.insurance.core.services;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import java.io.*;
+import java.util.List;
 import org.javaguru.travel.insurance.core.api.command.TravelExportAgreementToXmlCoreCommand;
 import org.javaguru.travel.insurance.core.api.command.TravelExportAgreementToXmlCoreResult;
 import org.javaguru.travel.insurance.core.api.command.TravelGetAgreementCoreCommand;
@@ -13,11 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import java.io.*;
-import java.util.List;
+
 
 @Component
 @Transactional

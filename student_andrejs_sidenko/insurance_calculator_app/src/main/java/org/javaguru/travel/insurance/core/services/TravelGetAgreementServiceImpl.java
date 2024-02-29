@@ -1,5 +1,6 @@
 package org.javaguru.travel.insurance.core.services;
 
+import java.util.List;
 import org.javaguru.travel.insurance.core.api.command.TravelGetAgreementCoreCommand;
 import org.javaguru.travel.insurance.core.api.command.TravelGetAgreementCoreResult;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
@@ -7,7 +8,7 @@ import org.javaguru.travel.insurance.core.validations.TravelAgreementUuidValidat
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.List;
+
 
 @Component
 @Transactional

@@ -1,5 +1,6 @@
 package org.javaguru.travel.insurance.core.validations.person;
 
+import java.util.Optional;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
@@ -7,7 +8,7 @@ import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import java.util.Optional;
+
 
 @Component
 class EmptyMedicalRiskLimitLevelValidation extends TravelPersonFieldValidationImpl {

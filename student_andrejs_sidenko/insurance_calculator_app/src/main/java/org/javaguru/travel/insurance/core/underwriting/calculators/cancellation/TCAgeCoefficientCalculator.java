@@ -1,16 +1,17 @@
 package org.javaguru.travel.insurance.core.underwriting.calculators.cancellation;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.domain.TCAgeCoefficient;
 import org.javaguru.travel.insurance.core.repositories.TCAgeCoefficientRepository;
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
-import java.util.Date;
+
 
 @Component
 class TCAgeCoefficientCalculator {

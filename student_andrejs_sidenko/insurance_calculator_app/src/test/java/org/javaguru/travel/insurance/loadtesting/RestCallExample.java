@@ -17,7 +17,7 @@ class RestCallExample {
             v2Call.start();
             threads.add(v1Call);
             threads.add(v2Call);
-        }
+        }   //This method demonstrates making REST calls concurrently using multiple threads
 
         threads.forEach(thread -> {
             try {

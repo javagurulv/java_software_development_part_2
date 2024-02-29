@@ -1,5 +1,6 @@
 package org.javaguru.travel.insurance.core.services;
 
+import java.util.UUID;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.domain.entities.*;
@@ -9,7 +10,7 @@ import org.javaguru.travel.insurance.core.repositories.entities.AgreementPersonR
 import org.javaguru.travel.insurance.core.repositories.entities.SelectedRiskEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import java.util.UUID;
+
 
 @Component
 class AgreementEntityFactory {

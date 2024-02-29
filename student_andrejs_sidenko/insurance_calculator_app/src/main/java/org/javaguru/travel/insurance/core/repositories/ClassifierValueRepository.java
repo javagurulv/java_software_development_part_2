@@ -1,12 +1,12 @@
 package org.javaguru.travel.insurance.core.repositories;
 
+import java.util.Optional;
 import org.javaguru.travel.insurance.core.domain.ClassifierValue;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.Optional;
 
 public interface ClassifierValueRepository extends JpaRepository<ClassifierValue, Long> {
 

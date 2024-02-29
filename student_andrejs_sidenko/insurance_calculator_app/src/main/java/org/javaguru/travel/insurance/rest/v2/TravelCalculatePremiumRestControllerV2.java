@@ -24,9 +24,7 @@ public class TravelCalculatePremiumRestControllerV2 {
 	@Autowired private TravelCalculatePremiumService calculatePremiumService;
 	@Autowired private DtoV2Converter dtoV2Converter;
 
-	@PostMapping(path = "/",
-			consumes = "application/json",
-			produces = "application/json")
+	@PostMapping(path = "/", consumes = "application/json", produces = "application/json")
 	public TravelCalculatePremiumResponseV2 calculatePremium(@RequestBody TravelCalculatePremiumRequestV2 request) {
 		Stopwatch stopwatch = Stopwatch.createStarted();
 		TravelCalculatePremiumResponseV2 response = processRequest(request);

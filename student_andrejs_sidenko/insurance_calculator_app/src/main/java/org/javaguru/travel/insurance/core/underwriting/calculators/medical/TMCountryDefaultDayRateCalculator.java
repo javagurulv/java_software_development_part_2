@@ -1,11 +1,12 @@
 package org.javaguru.travel.insurance.core.underwriting.calculators.medical;
 
+import java.math.BigDecimal;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.domain.TMCountryDefaultDayRate;
 import org.javaguru.travel.insurance.core.repositories.TMCountryDefaultDayRateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import java.math.BigDecimal;
+
 
 @Component
 class TMCountryDefaultDayRateCalculator {

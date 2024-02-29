@@ -1,11 +1,13 @@
 package org.javaguru.travel.insurance.core.domain.entities;
 
+import javax.persistence.*;
+import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import javax.persistence.*;
-import java.math.BigDecimal;
+
+
 
 @Entity
 @Table(name = "agreement_person_risks")

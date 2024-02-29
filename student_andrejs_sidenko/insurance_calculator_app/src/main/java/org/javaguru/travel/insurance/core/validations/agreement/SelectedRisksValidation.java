@@ -1,5 +1,8 @@
 package org.javaguru.travel.insurance.core.validations.agreement;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.repositories.ClassifierValueRepository;
@@ -7,9 +10,7 @@ import org.javaguru.travel.insurance.core.util.Placeholder;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @Component
 class SelectedRisksValidation extends TravelAgreementFieldValidationImpl {

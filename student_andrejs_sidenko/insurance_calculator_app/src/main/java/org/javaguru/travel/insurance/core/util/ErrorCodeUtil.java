@@ -1,12 +1,13 @@
 package org.javaguru.travel.insurance.core.util;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Properties;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.stereotype.Component;
-import java.util.List;
-import java.util.Properties;
-import java.io.IOException;
+
 
 @Component
 public class ErrorCodeUtil {
