@@ -3,6 +3,8 @@ include 'revinskaya_ekaterina:insurance_calculator_app'
 include 'revinskaya_ekaterina:doc_generator_app'
 include 'student_cekalins_andrejs:insurance_calculator_v2'
 
+include 'student_tarasova_oksana:travel_insurance_calculator'
+
 include 'teacher:step_0'
 include 'teacher:step_1'
 include 'teacher:step_2'
@@ -25,6 +27,7 @@ include 'teacher:step_18'
 
 
 include 'teacher:step_19_rabbitmq_example'
+
 
 
 include 'teacher:step_utils'
