@@ -1,7 +1,7 @@
-FROM eclipse-temurin:18-jdk-alpine
+FROM openjdk:18-jdk-alpine
 
-VOLUME /tmp
+COPY doc-generator-1.0.2.jar doc-generator.jar
 
-COPY build/libs/*.jar app.jar
+CMD ["java", "-jar", "doc-generator.jar"]
 
-ENTRYPOINT ["java","-jar","/app.jar"]
+EXPOSE 8080
