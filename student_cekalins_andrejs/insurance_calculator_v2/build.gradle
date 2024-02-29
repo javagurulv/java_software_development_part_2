@@ -59,5 +59,6 @@ docker {
 	dependsOn bootJar
 	name "insurance-calculator:1.0.2"
 	files 'build/libs/insurance-calculator-1.0.2.jar'
+	files 'wait-for-it.sh'
 	buildArgs(['JAR_FILE': "insurance-calculator-1.0.2.jar"])
 }
