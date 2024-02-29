@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -27,7 +26,7 @@ class TravelExportAgreementToXmlServiceImpl
 
     private static final Logger logger = LoggerFactory.getLogger(TravelExportAgreementToXmlServiceImpl.class);
 
-    @Value( "${agreement.xml.exporter.job.path}" )
+    @Value("${agreement.xml.exporter.job.path}")
     private String agreementExportPath;
 
     @Autowired private TravelGetAgreementService agreementService;

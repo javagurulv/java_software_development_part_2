@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class TravelRestRequestExecutionTimeLogger {
 
-    private static final Logger logger = LoggerFactory.getLogger(TravelRestRequestExecutionTimeLogger.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TravelRestRequestExecutionTimeLogger.class);
 
     public void logExecutionTime(Stopwatch stopwatch) {
         stopwatch.stop();
         long elapsedMillis = stopwatch.elapsed().toMillis();
-        logger.info("Request processing time (ms): " + elapsedMillis);
+        LOGGER.info("Request processing time (ms): " + elapsedMillis);
     }
 
 }

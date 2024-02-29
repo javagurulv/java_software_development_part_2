@@ -9,21 +9,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.*;
 
+
 @Component
 public class AgreementXmlExporterJob {
 
-    private static final Logger logger = LoggerFactory.getLogger(AgreementXmlExporterJob.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AgreementXmlExporterJob.class);
 
-    @Value( "${agreement.xml.exporter.job.enabled:false}" )
+    @Value("${agreement.xml.exporter.job.enabled:false}")
     private boolean jobEnabled;
 
-    @Value( "${agreement.xml.exporter.job.thread.count}" )
+    @Value("${agreement.xml.exporter.job.thread.count}")
     private Integer threadCount;
 
     @Autowired private TravelGetNotExportedAgreementUuidsService notExportedAgreementUuidsService;
@@ -38,10 +38,10 @@ public class AgreementXmlExporterJob {
     }
 
     private void executeJob() {
-        logger.info("AgreementXmlExporterJob started");
+        LOGGER.info("AgreementXmlExporterJob started");
         List<String> notExportedYetAgreementUuids = getNotExportedYetAgreementUuids();
         exportAgreements(notExportedYetAgreementUuids);
-        logger.info("AgreementXmlExporterJob finished");
+        LOGGER.info("AgreementXmlExporterJob finished");
     }
 
     private List<String> getNotExportedYetAgreementUuids() {
@@ -64,9 +64,9 @@ public class AgreementXmlExporterJob {
             try {
                 future.get();
             } catch (InterruptedException e) {
-                logger.info("AgreementXmlExporterJob exception", e);
+                LOGGER.info("AgreementXmlExporterJob exception", e);
             } catch (ExecutionException e) {
-                logger.info("AgreementXmlExporterJob exception", e);
+                LOGGER.info("AgreementXmlExporterJob exception", e);
             }
         }
     }

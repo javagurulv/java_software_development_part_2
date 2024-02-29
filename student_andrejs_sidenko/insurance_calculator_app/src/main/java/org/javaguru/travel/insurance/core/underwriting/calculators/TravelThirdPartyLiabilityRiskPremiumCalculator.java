@@ -4,7 +4,6 @@ import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.underwriting.TravelRiskPremiumCalculator;
 import org.springframework.stereotype.Component;
-
 import java.math.BigDecimal;
 
 @Component

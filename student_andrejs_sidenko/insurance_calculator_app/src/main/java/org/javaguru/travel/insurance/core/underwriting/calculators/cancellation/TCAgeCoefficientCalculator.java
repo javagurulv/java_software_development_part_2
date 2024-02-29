@@ -6,7 +6,6 @@ import org.javaguru.travel.insurance.core.repositories.TCAgeCoefficientRepositor
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;

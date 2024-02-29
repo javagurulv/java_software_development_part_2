@@ -11,7 +11,6 @@ import org.javaguru.travel.insurance.dto.CoreResponse;
 import org.javaguru.travel.insurance.dto.RiskPremium;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.javaguru.travel.insurance.dto.util.BigDecimalSerializer;
-
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -27,13 +26,13 @@ public class TravelCalculatePremiumResponseV1 extends CoreResponse {
     private String personFirstName;
     private String personLastName;
     private String personCode;
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date personBirthDate;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date agreementDateFrom;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date agreementDateTo;
 
     private String country;

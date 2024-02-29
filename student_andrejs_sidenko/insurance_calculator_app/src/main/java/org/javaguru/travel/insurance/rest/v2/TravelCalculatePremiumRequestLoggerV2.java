@@ -10,15 +10,15 @@ import org.springframework.stereotype.Component;
 @Component
 class TravelCalculatePremiumRequestLoggerV2 {
 
-    private static final Logger logger = LoggerFactory.getLogger(TravelCalculatePremiumRequestLoggerV2.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TravelCalculatePremiumRequestLoggerV2.class);
 
     void log(TravelCalculatePremiumRequestV2 request) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             String json = objectMapper.writeValueAsString(request);
-            logger.info("REQUEST: " + json);
+            LOGGER.info("REQUEST: " + json);
         } catch (JsonProcessingException e) {
-            logger.error("Error to convert request to JSON", e);
+            LOGGER.error("Error to convert request to JSON", e);
         }
     }
 

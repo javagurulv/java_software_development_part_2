@@ -1,6 +1,11 @@
 plugins {
 	id 'org.springframework.boot' version "2.7.5"
 	id 'com.palantir.docker' version '0.35.0'
+	id 'checkstyle'
+}
+
+checkstyle {
+	configFile = 'config/checkstyle/checkstyle.xml' as File
 }
 
 dependencies {
@@ -60,3 +65,5 @@ docker {
 	files 'build/libs/insurance-calculator-1.0.2.jar'
 	buildArgs(['JAR_FILE': "insurance-calculator-1.0.2.jar"])
 }
+
+

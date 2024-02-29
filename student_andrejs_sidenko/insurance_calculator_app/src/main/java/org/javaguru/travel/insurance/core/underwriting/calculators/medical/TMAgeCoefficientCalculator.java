@@ -7,7 +7,6 @@ import org.javaguru.travel.insurance.core.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
@@ -17,7 +16,7 @@ import java.util.Date;
 @Component
 class TMAgeCoefficientCalculator {
 
-    @Value( "${medical.risk.age.coefficient.enabled:false}" )
+    @Value("${medical.risk.age.coefficient.enabled:false}")
     private Boolean medicalRiskAgeCoefficientEnabled;
 
     @Autowired private DateTimeUtil dateTimeUtil;

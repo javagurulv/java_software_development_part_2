@@ -1,11 +1,10 @@
 package org.javaguru.travel.insurance.core.util;
 
 import org.springframework.stereotype.Component;
-
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 @Component
 public class DateTimeUtil {

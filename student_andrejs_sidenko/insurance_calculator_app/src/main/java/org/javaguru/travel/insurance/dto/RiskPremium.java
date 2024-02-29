@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.javaguru.travel.insurance.dto.util.BigDecimalSerializer;
-
 import java.math.BigDecimal;
 
 @Getter

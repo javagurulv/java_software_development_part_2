@@ -5,7 +5,6 @@ import org.javaguru.travel.insurance.core.domain.TCCountrySafetyRatingCoefficien
 import org.javaguru.travel.insurance.core.repositories.TCCountrySafetyRatingCoefficientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.math.BigDecimal;
 
 @Component
@@ -16,7 +15,8 @@ class TCCountrySafetyRatingCoefficientCalculator {
     BigDecimal calculate(AgreementDTO agreement) {
         return countrySafetyRatingCoefficientRepository.findByCountryIc(agreement.getCountry())
                 .map(TCCountrySafetyRatingCoefficient::getCoefficient)
-                .orElseThrow(() -> new RuntimeException("Country safety rating coefficient not found by country id = " + agreement.getCountry()));
+                .orElseThrow(() -> new RuntimeException("Country safety rating coefficient not found by country id = "
+                        + agreement.getCountry()));
     }
 
 }

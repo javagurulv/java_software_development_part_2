@@ -7,13 +7,12 @@ import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
 import java.util.Optional;
 
 @Component
 class EmptyMedicalRiskLimitLevelValidation extends TravelPersonFieldValidationImpl {
 
-    @Value( "${medical.risk.limit.level.enabled:false}" )
+    @Value("${medical.risk.limit.level.enabled:false}")
     private Boolean medicalRiskLimitLevelEnabled;
 
     @Autowired private ValidationErrorFactory errorFactory;

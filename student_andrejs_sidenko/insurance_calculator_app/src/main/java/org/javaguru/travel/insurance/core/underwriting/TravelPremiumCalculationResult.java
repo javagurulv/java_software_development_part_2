@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.core.underwriting;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.javaguru.travel.insurance.core.api.dto.RiskDTO;
-
 import java.math.BigDecimal;
 import java.util.List;
 

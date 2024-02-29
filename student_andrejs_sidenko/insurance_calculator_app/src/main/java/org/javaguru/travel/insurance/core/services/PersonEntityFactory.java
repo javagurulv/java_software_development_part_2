@@ -5,7 +5,6 @@ import org.javaguru.travel.insurance.core.domain.entities.PersonEntity;
 import org.javaguru.travel.insurance.core.repositories.entities.PersonEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.Optional;
 
 @Component
