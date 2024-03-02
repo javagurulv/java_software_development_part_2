@@ -1,5 +1,4 @@
 FROM openjdk:18-jdk-alpine
-COPY build/libs/*.jar insurance-calc.jar
-ENTRYPOINT ["java"]
-CMD ["-jar", "insurance-calc.jar"]
+COPY insurance-calc-1.0.2.jar insurance-calc.jar
+CMD ["java", "-Dspring.profiles.active=mysql-container", "-jar", "insurance-calc.jar"]
 EXPOSE 8080
