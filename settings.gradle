@@ -38,6 +38,8 @@ include 'teacher:step_25:insurance-calculator-app'
 include 'teacher:step_25:doc-generator-app'
 include 'teacher:step_26:insurance-calculator-app'
 include 'teacher:step_26:doc-generator-app'
+include 'teacher:step_27:insurance-calculator-app'
+include 'teacher:step_27:doc-generator-app'
 
 
 
