@@ -1,0 +1,1 @@
+org.javaguru.doc.generator.core.api.dto.AgreementDTO@38b3b90f
