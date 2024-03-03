@@ -32,6 +32,8 @@ include 'teacher:step_22:insurance-calculator-app'
 include 'teacher:step_22:doc-generator-app'
 include 'teacher:step_23:insurance-calculator-app'
 include 'teacher:step_23:doc-generator-app'
+include 'teacher:step_24:insurance-calculator-app'
+include 'teacher:step_24:doc-generator-app'
 
 
 include 'teacher:step_19_rabbitmq_example'
