@@ -40,9 +40,6 @@ include 'teacher:step_26:insurance-calculator-app'
 include 'teacher:step_26:doc-generator-app'
 
 
-include 'teacher:step_19_rabbitmq_example'
-
-
 
 include 'teacher:step_utils'
 
