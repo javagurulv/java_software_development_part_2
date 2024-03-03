@@ -28,6 +28,8 @@ include 'teacher:step_18'
 include 'teacher:step_19'
 include 'teacher:step_20'
 include 'teacher:step_21'
+include 'teacher:step_22:insurance-calculator-app'
+include 'teacher:step_22:doc-generator-app'
 
 
 include 'teacher:step_19_rabbitmq_example'
