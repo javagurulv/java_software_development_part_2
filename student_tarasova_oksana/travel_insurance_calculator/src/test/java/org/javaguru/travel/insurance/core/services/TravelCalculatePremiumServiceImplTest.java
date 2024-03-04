@@ -6,6 +6,7 @@ import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.domain.entities.AgreementEntity;
+import org.javaguru.travel.insurance.core.messagebroker.ProposalGeneratorQueueSender;
 import org.javaguru.travel.insurance.core.services.AgreementEntityFactory;
 import org.javaguru.travel.insurance.core.services.AgreementPersonsPremiumCalculator;
 import org.javaguru.travel.insurance.core.services.AgreementTotalPremiumCalculator;
@@ -22,6 +23,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,6 +33,7 @@ public class TravelCalculatePremiumServiceImplTest {
     @Mock private AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator;
     @Mock private AgreementTotalPremiumCalculator agreementTotalPremiumCalculator;
     @Mock private AgreementEntityFactory agreementEntityFactory;
+    @Mock private ProposalGeneratorQueueSender proposalGeneratorQueueSender;
 
     @InjectMocks
     private TravelCalculatePremiumServiceImpl premiumService;
@@ -86,6 +89,20 @@ public class TravelCalculatePremiumServiceImplTest {
         when(agreementTotalPremiumCalculator.calculate(agreement)).thenReturn(BigDecimal.ONE);
         TravelCalculatePremiumCoreResult result = premiumService.calculatePremium(new TravelCalculatePremiumCoreCommand(agreement));
         assertEquals(result.getAgreement().getAgreementPremium(), BigDecimal.ONE);
+    }
+
+    @Test
+    public void shouldCalculateAgreementTotalPremiumLogger() {
+        var person = new PersonDTO();
+        var agreement = new AgreementDTO();
+        agreement.setPersons(List.of(person));
+        when(agreementValidator.validate(agreement)).thenReturn(Collections.emptyList());
+        var agreementEntity = new AgreementEntity();
+        when(agreementEntityFactory.createAgreementEntity(agreement)).thenReturn(agreementEntity);
+        when(agreementTotalPremiumCalculator.calculate(agreement)).thenReturn(BigDecimal.ONE);
+        TravelCalculatePremiumCoreResult result = premiumService.calculatePremium(new TravelCalculatePremiumCoreCommand(agreement));
+        assertEquals(result.getAgreement().getAgreementPremium(), BigDecimal.ONE);
+        verify(proposalGeneratorQueueSender).send(any());
     }
 
 }
