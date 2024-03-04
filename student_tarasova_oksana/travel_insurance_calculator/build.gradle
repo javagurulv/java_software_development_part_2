@@ -60,7 +60,9 @@ clean.doFirst {
 }
 
 docker {
+	dependsOn bootJar
 	name "insurance-calc:1.0.2"
 	files 'build/libs/insurance-calc-1.0.2.jar'
+	files 'wait-for-it.sh'
 	buildArgs(['JAR_FILE': "insurance-calc-1.0.2.jar"])
 }
