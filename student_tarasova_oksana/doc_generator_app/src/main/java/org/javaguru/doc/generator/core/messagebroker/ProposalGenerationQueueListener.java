@@ -1,8 +1,10 @@
-package org.javaguru.doc.generator.messagebroker;
+package org.javaguru.doc.generator.core.messagebroker;
 
+import org.javaguru.doc.generator.core.api.dto.AgreementDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -17,18 +19,19 @@ public class ProposalGenerationQueueListener {
 
     private static final Logger logger = LoggerFactory.getLogger(ProposalGenerationQueueListener.class);
 
-    @Value( "${proposals.directory.path}" )
-    private String proposalsDirectoryPath;
+    @Autowired
+    private JsonStringToAgreementDtoConverter agreementDtoConverter;
+    @Autowired private ProposalGenerator proposalGenerator;
+
 
     @RabbitListener(queues = RabbitMQConfig.QUEUE_PROPOSAL_GENERATION)
     public void receiveMessage(String message) throws IOException {
-        logger.info(message);
-        Path path = Path.of(proposalsDirectoryPath + "/proposal.txt");
         try {
-            Files.write(path, Collections.singleton(message), StandardOpenOption.CREATE);
+            logger.info(message);
+            AgreementDTO agreementDTO = agreementDtoConverter.convert(message);
+            proposalGenerator.generateProposalAndStoreToFile(agreementDTO);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("FAIL to process message: ", e);
         }
     }
-
 }

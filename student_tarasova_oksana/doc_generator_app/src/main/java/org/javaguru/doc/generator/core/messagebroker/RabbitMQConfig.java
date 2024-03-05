@@ -1,4 +1,4 @@
-package org.javaguru.doc.generator.messagebroker;
+package org.javaguru.doc.generator.core.messagebroker;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
