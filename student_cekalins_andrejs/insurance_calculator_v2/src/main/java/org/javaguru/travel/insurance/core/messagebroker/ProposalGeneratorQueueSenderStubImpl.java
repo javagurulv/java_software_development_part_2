@@ -9,7 +9,6 @@ import org.springframework.amqp.AmqpException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-
 @Component
 @Profile({"h2", "mysql-local"})
 class ProposalGeneratorQueueSenderStubImpl implements ProposalGeneratorQueueSender {
@@ -28,4 +27,5 @@ class ProposalGeneratorQueueSenderStubImpl implements ProposalGeneratorQueueSend
             logger.error("Error to sent proposal generation message", e);
         }
     }
+
 }

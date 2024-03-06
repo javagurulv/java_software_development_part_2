@@ -17,8 +17,7 @@ class ProposalGeneratorQueueSenderImpl implements ProposalGeneratorQueueSender {
 
     private static final Logger logger = LoggerFactory.getLogger(ProposalGeneratorQueueSenderImpl.class);
 
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+    @Autowired private RabbitTemplate rabbitTemplate;
 
     @Override
     public void send(AgreementDTO agreement) {
@@ -33,4 +32,5 @@ class ProposalGeneratorQueueSenderImpl implements ProposalGeneratorQueueSender {
             logger.error("Error to sent proposal generation message", e);
         }
     }
+
 }
