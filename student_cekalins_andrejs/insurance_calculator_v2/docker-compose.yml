@@ -24,7 +24,7 @@ services:
 
   insurance-calculator-app:
     networks: [javaguru]
-    container_name: insurance-calculator
+    container_name: insurance-calc-container
     image: insurance-calculator:1.0.2
     ports:
       - "8080:8080"
