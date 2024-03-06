@@ -1,5 +1,6 @@
 FROM openjdk:18-jdk-alpine
 
+# Install bash
 RUN apk add --no-cache bash
 
 COPY wait-for-it.sh wait-for-it.sh
