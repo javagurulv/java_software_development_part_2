@@ -3,8 +3,8 @@ include 'revinskaya_ekaterina:insurance_calculator_app'
 include 'revinskaya_ekaterina:doc_generator_app'
 include 'student_cekalins_andrejs:insurance_calculator_v2'
 include 'student_andrejs_sidenko:insurance_calculator_app'
-
-include 'student_tarasova_oksana:travel_insurance_calculator'
+include 'student_tarasova_oksana:insurance_calculator_app'
+include 'student_tarasova_oksana:doc_generator_app'
 
 include 'teacher:step_0'
 include 'teacher:step_1'
@@ -36,9 +36,10 @@ include 'teacher:step_24:insurance-calculator-app'
 include 'teacher:step_24:doc-generator-app'
 include 'teacher:step_25:insurance-calculator-app'
 include 'teacher:step_25:doc-generator-app'
-
-
-include 'teacher:step_19_rabbitmq_example'
+include 'teacher:step_26:insurance-calculator-app'
+include 'teacher:step_26:doc-generator-app'
+include 'teacher:step_27:insurance-calculator-app'
+include 'teacher:step_27:doc-generator-app'
 
 
 
