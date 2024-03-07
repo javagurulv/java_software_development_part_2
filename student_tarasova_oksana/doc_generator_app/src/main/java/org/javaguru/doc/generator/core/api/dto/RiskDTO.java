@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(includeFieldNames = false)
 public class RiskDTO {
 
     private String riskIc;

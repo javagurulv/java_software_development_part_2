@@ -21,15 +21,16 @@ public class ProposalGenerationQueueListener {
 
     @Autowired
     private JsonStringToAgreementDtoConverter agreementDtoConverter;
-    @Autowired private ProposalGenerator proposalGenerator;
-
+    @Autowired private PDFDocumentAgreement pdfDocumentAgreement;
+   /* @Autowired private ProposalGenerator proposalGenerator;*/
 
     @RabbitListener(queues = RabbitMQConfig.QUEUE_PROPOSAL_GENERATION)
     public void receiveMessage(String message) throws IOException {
         try {
             logger.info(message);
             AgreementDTO agreementDTO = agreementDtoConverter.convert(message);
-            proposalGenerator.generateProposalAndStoreToFile(agreementDTO);
+            /*proposalGenerator.generateProposalAndStoreToFile(agreementDTO);*/
+            pdfDocumentAgreement.getPDFAgreement(agreementDTO);
         } catch (Exception e) {
             logger.error("FAIL to process message: ", e);
         }

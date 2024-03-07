@@ -11,6 +11,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(includeFieldNames=false)
 public class PersonDTO {
 
     private String personFirstName;

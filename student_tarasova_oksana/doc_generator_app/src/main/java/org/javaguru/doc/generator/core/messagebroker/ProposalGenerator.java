@@ -10,7 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.Collections;
 
-@Component
+
 class ProposalGenerator {
 
     @Value( "${proposals.directory.path}" )
