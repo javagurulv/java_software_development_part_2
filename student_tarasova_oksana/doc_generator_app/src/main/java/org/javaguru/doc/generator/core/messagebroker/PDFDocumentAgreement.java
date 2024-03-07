@@ -33,12 +33,12 @@ public class PDFDocumentAgreement {
             addWrapperTextCentered("Agreement travel insurance", 22, bolt, contentStream, page);
 
             updateY(-15);
-            addHeaderAndWrapperText("agreement date from", agreementDTO.getAgreementDateFrom().toString(), contentStream);
-            addHeaderAndWrapperText("agreement date to", agreementDTO.getAgreementDateTo().toString(), contentStream);
-            addHeaderAndWrapperText("country", agreementDTO.getCountry().toString(), contentStream);
-            addHeaderAndWrapperText("Risks", agreementDTO.getSelectedRisks().toString(), contentStream);
-            addHeaderAndWrapperText("Persons", agreementDTO.getPersons().toString(), contentStream);
-            addHeaderAndWrapperText("agreement premium", agreementDTO.getAgreementPremium().toString(), contentStream);
+            addHeaderAndWrapperText("agreement date from: ", agreementDTO.getAgreementDateFrom().toString(), contentStream);
+            addHeaderAndWrapperText("agreement date to: ", agreementDTO.getAgreementDateTo().toString(), contentStream);
+            addHeaderAndWrapperText("country: ", agreementDTO.getCountry().toString(), contentStream);
+            addHeaderAndWrapperText("Risks: ", agreementDTO.getSelectedRisks().toString(), contentStream);
+            addHeaderAndWrapperTextPerson("Persons: ", agreementDTO.getPersons().toString(), contentStream);
+            addHeaderAndWrapperText("Agreement premium: ", agreementDTO.getAgreementPremium().toString(), contentStream);
             contentStream.close();
             document.save(proposalsDirectoryPath +"/" + "agreement-proposal-" + agreementDTO.getUuid() + ".pdf");
             document.close();
@@ -82,6 +82,30 @@ public class PDFDocumentAgreement {
                 contentStream.newLineAtOffset(X, Y);
             }
             string = wrappedText[i];
+            contentStream.showText(string);
+            contentStream.endText();
+        }
+
+    }
+
+    private void addHeaderAndWrapperTextPerson(String strHeader, String text, PDPageContentStream contentStream) throws IOException {
+        updateY(-15);
+        contentStream.beginText();
+        contentStream.newLineAtOffset(X, Y);
+        contentStream.setFont(bolt, 12);
+        contentStream.showText(strHeader);
+        contentStream.setFont(plane, 12);
+
+        String[] wrappedText = text.split("\\r?\\n");
+        String string;
+        for (int i = 0; i < wrappedText.length; i++) {
+            if (i != 0) {
+                updateY(-15);
+                contentStream.beginText();
+                contentStream.newLineAtOffset(X, Y);
+            }
+            string = wrappedText[i];
+
             contentStream.showText(string);
             contentStream.endText();
         }

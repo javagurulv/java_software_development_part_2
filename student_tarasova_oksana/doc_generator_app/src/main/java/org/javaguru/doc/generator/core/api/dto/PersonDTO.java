@@ -11,7 +11,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(includeFieldNames=false)
+
 public class PersonDTO {
 
     private String personFirstName;
@@ -28,4 +28,13 @@ public class PersonDTO {
 
     private List<RiskDTO> risks;
 
+    @Override
+    public String toString() {
+        return          personFirstName + " " + personLastName + '\n' +
+                        "person code: " + personCode + '\n' +
+                        personBirthDate +'\n' +
+                        medicalRiskLimitLevel + '\n' +
+                        travelCost +'\n' +
+                        risks + '\n';
+    }
 }
