@@ -1,6 +1,7 @@
 include 'student_lastname_firstname'
 include 'revinskaya_ekaterina:insurance_calculator_app'
 include 'revinskaya_ekaterina:doc_generator_app'
+include 'student_cekalins_andrejs:doc-generator-app'
 include 'student_cekalins_andrejs:insurance_calculator_v2'
 include 'student_andrejs_sidenko:insurance_calculator_app'
 include 'student_tarasova_oksana:insurance_calculator_app'
