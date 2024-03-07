@@ -4,20 +4,12 @@ networks:
   javaguru:
 
 services:
-  message-broker:
-    networks: [javaguru]
-    container_name: rabbitmq-container
-    image: rabbitmq:3-management
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-
   db:
     networks: [javaguru]
     container_name: mysql-container
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: javaguru
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: insurance-calculator-db
     ports:
       - "3000:3306"
@@ -29,5 +21,4 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - message-broker
       - db

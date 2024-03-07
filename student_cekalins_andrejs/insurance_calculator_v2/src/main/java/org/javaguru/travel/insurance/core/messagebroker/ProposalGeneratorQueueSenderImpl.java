@@ -16,8 +16,8 @@ import org.springframework.stereotype.Component;
 class ProposalGeneratorQueueSenderImpl implements ProposalGeneratorQueueSender {
 
     private static final Logger logger = LoggerFactory.getLogger(ProposalGeneratorQueueSenderImpl.class);
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+
+    @Autowired private RabbitTemplate rabbitTemplate;
 
     @Override
     public void send(AgreementDTO agreement) {
@@ -25,11 +25,12 @@ class ProposalGeneratorQueueSenderImpl implements ProposalGeneratorQueueSender {
         try {
             String json = objectMapper.writeValueAsString(agreement);
             logger.info("PROPOSAL GENERATION message content: " + json);
-            rabbitTemplate.convertAndSend("q.proposal-generation", json);
+            rabbitTemplate.convertAndSend(RabbitMQConfig.QUEUE_PROPOSAL_GENERATION, json);
         } catch (JsonProcessingException e) {
             logger.error("Error to convert agreement to JSON", e);
         } catch (AmqpException e) {
             logger.error("Error to sent proposal generation message", e);
         }
     }
+
 }
