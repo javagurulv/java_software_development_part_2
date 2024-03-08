@@ -49,7 +49,7 @@ plugins {
 
 	bootJar {
 		enabled = true
-		archiveBaseName = 'insurance-calculator'
+		archiveBaseName = 'insurance-calculat'
 		archiveVersion = '1.0.2'
 	}
 
@@ -59,8 +59,8 @@ plugins {
 	}
 docker {
 	dependsOn bootJar
-	name "insurance-calculator:1.0.2"
-	files 'build/libs/insurance-calculator-1.0.2.jar'
+	name "insurance-calculat:1.0.2"
+	files 'build/libs/insurance-calculat-1.0.2.jar'
 	files 'wait-for-it.sh'
-	buildArgs(['JAR_FILE': "insurance-calculator-1.0.2.jar"])
+	buildArgs(['JAR_FILE': "insurance-calculat-1.0.2.jar"])
 }
