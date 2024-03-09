@@ -41,6 +41,8 @@ include 'teacher:step_26:insurance-calculator-app'
 include 'teacher:step_26:doc-generator-app'
 include 'teacher:step_27:insurance-calculator-app'
 include 'teacher:step_27:doc-generator-app'
+include 'teacher:step_28:insurance-calculator-app'
+include 'teacher:step_28:doc-generator-app'
 
 
 
