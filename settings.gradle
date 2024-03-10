@@ -54,6 +54,9 @@ include 'teacher:step_32:doc-generator-app'
 include 'teacher:step_33:insurance-calculator-app'
 include 'teacher:step_33:doc-generator-app'
 include 'teacher:step_33:black-list-app'
+include 'teacher:step_34:insurance-calculator-app'
+include 'teacher:step_34:doc-generator-app'
+include 'teacher:step_34:black-list-app'
 
 
 

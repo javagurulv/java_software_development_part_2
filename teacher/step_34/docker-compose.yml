@@ -1,0 +1,54 @@
+version: '1'
+
+networks:
+  javaguru:
+
+services:
+  message-broker:
+    networks: [javaguru]
+    container_name: rabbitmq-container
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  db:
+    networks: [javaguru]
+    container_name: mysql-container
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+    volumes:
+      - ./mysql-database-init:/docker-entrypoint-initdb.d
+    ports:
+      - "3000:3306"
+
+  black-list-app:
+    networks: [javaguru]
+    container_name: black-list-container
+    image: black-list:1.0.2
+    ports:
+      - "8090:8080"
+    depends_on:
+      - db
+
+  insurance-calculator-app:
+    networks: [javaguru]
+    container_name: insurance-calc-container
+    image: insurance-calculator:1.0.2
+    ports:
+      - "8080:8080"
+    depends_on:
+      - message-broker
+      - db
+
+  doc-generator-app:
+    networks: [javaguru]
+    container_name: doc-generator-container
+    image: doc-generator:1.0.2
+    volumes:
+      - ./doc-generator-app/docs/proposals:/app/docs/proposals
+    ports:
+      - "8081:8080"
+    depends_on:
+      - message-broker
