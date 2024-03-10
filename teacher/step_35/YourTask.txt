@@ -1,0 +1,2 @@
+Ваша задача: создать в BlackList уровень REST API.
+REST API url: /blacklist/person/check  HTTP POST.
