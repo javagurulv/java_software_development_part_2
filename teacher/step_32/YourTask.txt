@@ -1,0 +1,11 @@
+У микро сервисов Insurance Calculator и Black List
+будут свои отдельные базы данных.
+
+Ваша задача: разобраться как поднять MySql Docker контейнер
+и создать там две базы данных:
+- insurance_calculator_db
+- black_list_db
+
+Запустить контейнеры при помощи docker-compose и убедиться,
+что на сервере создаются обе базы и Insurance Calculator
+стартует без ошибок.
