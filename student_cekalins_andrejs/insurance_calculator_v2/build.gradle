@@ -57,7 +57,7 @@ jar {
 
 bootJar {
 	enabled = true
-	archiveBaseName = 'insurance-calculat'
+	archiveBaseName = 'insurance-calculator'
 	archiveVersion = '1.0.2'
 }
 
@@ -68,8 +68,8 @@ clean.doFirst {
 
 docker {
 	dependsOn bootJar
-	name "insurance-calculat:1.0.2"
-	files 'build/libs/insurance-calculat-1.0.2.jar'
+	name "insurance-calculator:1.0.2"
+	files 'build/libs/insurance-calculator-1.0.2.jar'
 	files 'wait-for-it.sh'
-	buildArgs(['JAR_FILE': "insurance-calculat-1.0.2.jar"])
+	buildArgs(['JAR_FILE': "insurance-calculator-1.0.2.jar"])
 }

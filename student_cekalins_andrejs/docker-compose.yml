@@ -25,7 +25,7 @@ services:
   insurance-calculator-app:
     networks: [javaguru]
     container_name: insurance-calculat-container
-    image: insurance-calculat:1.0.2
+    image: insurance-calculator:1.0.2
     ports:
       - "8080:8080"
     depends_on:
