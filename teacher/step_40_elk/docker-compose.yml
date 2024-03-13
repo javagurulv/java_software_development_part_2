@@ -1,0 +1,106 @@
+version: '1'
+
+networks:
+  javaguru:
+
+services:
+  message-broker:
+    networks: [javaguru]
+    container_name: rabbitmq-container
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  db:
+    networks: [javaguru]
+    container_name: mysql-container
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+    volumes:
+      - ./mysql-database-init:/docker-entrypoint-initdb.d
+    ports:
+      - "3000:3306"
+
+  black-list-app:
+    networks: [javaguru]
+    container_name: black-list-container
+    image: black-list:1.0.2
+    ports:
+      - "8090:8080"
+    depends_on:
+      - db
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
+
+
+  insurance-calculator-app:
+    networks: [javaguru]
+    container_name: insurance-calc-container
+    image: insurance-calculator:1.0.2
+    ports:
+      - "8080:8080"
+    depends_on:
+      - message-broker
+      - db
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
+
+
+  doc-generator-app:
+    networks: [javaguru]
+    container_name: doc-generator-container
+    image: doc-generator:1.0.2
+    volumes:
+      - ./doc-generator-app/docs/proposals:/app/docs/proposals
+    ports:
+      - "8081:8080"
+    depends_on:
+      - message-broker
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
+
+
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
+    ports:
+      - "9200:9200"
+    environment:
+      - "discovery.type=single-node"
+    volumes:
+      - ./elk/elasticsearch/data:/usr/share/elasticsearch/data:rw              # Persistence data
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.2.0
+    ports:
+      - "25826:25826"
+      - "5044:5044"
+    volumes:
+      - ./elk/logstash/pipeline:/usr/share/logstash/pipeline:ro                # Pipeline configuration
+    restart: on-failure
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.2.0
+    ports:
+      - "5601:5601"
+    restart: on-failure
+    depends_on:
+      - elasticsearch
+
+  filebeat:
+    image: my-custom-filebeat:1.0.2
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro           # Docker logs
+      - /var/run/docker.sock:/var/run/docker.sock:ro                       # Additional information about containers
+      - ./elk/filebeat/data:/usr/share/filebeat/data:rw                        # Persistence data
+    user: root                                                             # Allow access to log files and docker.sock
+    restart: always
+    depends_on:
+      - logstash
