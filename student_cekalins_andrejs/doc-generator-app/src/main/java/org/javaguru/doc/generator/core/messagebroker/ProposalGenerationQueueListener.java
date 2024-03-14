@@ -36,7 +36,7 @@ public class ProposalGenerationQueueListener {
             retryOrForwardToDeadLetterQueue(message);
         }
     }
-    private void retryOrForwardToDeadLetterQueue(org.springframework.amqp.core.Message message) {
+    private void retryOrForwardToDeadLetterQueue(Message message) {
         Integer retryCount = message.getMessageProperties().getHeader("x-retry-count");
         logger.info("MESSAGE DELIVERY TAG "
                 + message.getMessageProperties().getDeliveryTag()
@@ -55,7 +55,7 @@ public class ProposalGenerationQueueListener {
         }
     }
 
-    private void processMessage(org.springframework.amqp.core.Message message) throws Exception {
+    private void processMessage(Message message) throws Exception {
         String messageBody = new String(message.getBody());
         logger.info(messageBody);
         AgreementDTO agreementDTO = agreementDtoConverter.convert(messageBody);
