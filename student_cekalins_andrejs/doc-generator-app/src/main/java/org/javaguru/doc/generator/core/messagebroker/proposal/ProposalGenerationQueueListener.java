@@ -1,6 +1,7 @@
-package org.javaguru.doc.generator.core.messagebroker;
+package org.javaguru.doc.generator.core.messagebroker.proposal;
 
 import org.javaguru.doc.generator.core.api.dto.AgreementDTO;
+import org.javaguru.doc.generator.core.messagebroker.RabbitMQConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
