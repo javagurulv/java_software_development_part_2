@@ -1,0 +1,11 @@
+При вызове BlackList персона должна быть передана полностью,
+все поля обязательные, отсутствие любо из полей должно приводить к ошибке.
+
+Коды ошибок:
+ERROR_CODE_1 - Field personFirstName must not be empty!
+ERROR_CODE_2 - Field personLastName must not be empty!
+ERROR_CODE_3 - Field personCode must not be empty!
+
+Ваша задача: создать в BlackList уровень бизнес логики
+(core команду, ответ, сервис, валидацию входных данных).
+
