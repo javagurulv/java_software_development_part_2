@@ -1,4 +1,4 @@
-package org.javaguru.travel.insurance.core.messagebroker;
+package org.javaguru.travel.insurance.core.messagebroker.proposal;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
