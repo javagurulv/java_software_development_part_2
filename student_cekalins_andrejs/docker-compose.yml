@@ -23,6 +23,15 @@ services:
     ports:
       - "3000:3306"
 
+  black-list-app:
+    networks: [ javaguru ]
+    container_name: black-list-container
+    image: black-list:1.0.2
+    ports:
+      - "8090:8080"
+    depends_on:
+      - db
+
   insurance-calculator-app:
     networks: [ javaguru ]
     container_name: insurance-calculator-container
