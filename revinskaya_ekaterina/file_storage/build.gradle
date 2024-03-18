@@ -1,0 +1,48 @@
+plugins {
+	id 'org.springframework.boot' version "2.7.5"
+	id 'com.palantir.docker' version "0.35.0"
+}
+
+dependencies {
+
+	implementation('org.springframework.boot:spring-boot-starter-cache:2.7.5')
+
+	implementation('org.springframework.boot:spring-boot-starter-web:2.7.5')
+
+	implementation('com.fasterxml.jackson.core:jackson-core:2.14.2')
+	implementation('com.google.guava:guava:31.0.1-jre')
+
+	compileOnly('org.projectlombok:lombok:1.18.30')
+	annotationProcessor('org.projectlombok:lombok:1.18.30')
+
+
+	testCompileOnly('org.projectlombok:lombok:1.18.30')
+	testAnnotationProcessor('org.projectlombok:lombok:1.18.30')
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test:2.7.5')
+	implementation('org.springframework.boot:spring-boot-starter-test:2.7.5')
+
+
+	test {
+		useJUnitPlatform()
+	}
+
+}
+
+jar {
+	enabled = false
+}
+
+bootJar {
+	enabled = true
+	archiveBaseName = 'file-storage'
+	archiveVersion = '1.0.0'
+}
+
+
+docker {
+	dependsOn bootJar
+	name "file-storage:1.0.0"
+	files 'build/libs/file-storage-1.0.0.jar'
+	buildArgs(['JAR_FILE': "file-storage-1.0.0.jar"])
+}

@@ -5,6 +5,8 @@ import lv.javaguru.travel.insurance.core.services.send_agreement_service.send_me
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
+
 @Component
 class SendAgreementServiceImpl implements SendAgreementService{
     @Autowired
@@ -13,5 +15,10 @@ class SendAgreementServiceImpl implements SendAgreementService{
     @Override
     public void sendAgreement(AgreementDTO agreementDTO) {
         messageSender.sendAgreement(agreementDTO);
+    }
+
+    @Override
+    public void sendAgreementXML(String filename) {
+        messageSender.sendAgreementXML(filename);
     }
 }

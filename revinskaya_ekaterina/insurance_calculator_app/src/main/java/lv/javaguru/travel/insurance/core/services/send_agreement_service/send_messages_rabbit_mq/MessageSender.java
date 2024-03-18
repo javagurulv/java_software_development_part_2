@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
+
 @Component
 public class MessageSender {
     @Autowired
@@ -14,6 +16,9 @@ public class MessageSender {
 
     public void sendAgreement(AgreementDTO agreementDTO) {
         rabbit.convertAndSend("agreement.exchanger", "agreement", agreementDTO);
+    }
+    public void sendAgreementXML(String filename) {
+        rabbit.convertAndSend("agreement.exchanger", "agreementXML", new File(filename));
     }
 
 }

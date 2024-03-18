@@ -1,6 +1,7 @@
-package lv.javaguru.travel.insurance.core.servises.receive_messages_rabbit_mq;
+package lv.javaguru.generator.core.servises.receive_messages_rabbit_mq;
 
-import lv.javaguru.travel.insurance.core.servises.conver_to_pdf.ConvertToPDFService;
+import lv.javaguru.generator.core.servises.conver_to_pdf.ConvertToPDFService;
+import lv.javaguru.generator.core.servises.sender.SendFileToFileStorage;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
@@ -15,13 +16,15 @@ import java.io.IOException;
 public class RabbitConfig {
     @Autowired
     private ReceiverLogger logger;
-
+    @Autowired
+    private SendFileToFileStorage sendFileToFileStorage;
     @Autowired
     private ConvertToPDFService convertToPDFService;
 
     @RabbitListener(queues = "agreement.queue")
-    public void receiveMessage(String message) throws IOException {
+    public void receiveMessage(String message) throws IOException, InterruptedException {
         logger.log(message);
-        convertToPDFService.convertAgreementToPDF(message);
+        String uuid = convertToPDFService.convertAgreementToPDF(message);
+        sendFileToFileStorage.sendToFileStorage(uuid);
     }
 }

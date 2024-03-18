@@ -1,4 +1,4 @@
-package lv.javaguru.travel.insurance.core.servises.receive_messages_rabbit_mq;
+package lv.javaguru.generator.core.servises.receive_messages_rabbit_mq;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
