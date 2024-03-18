@@ -1,4 +1,4 @@
-package org.javaguru.doc.generator.core.messagebroker;
+package org.javaguru.doc.generator.core.messagebroker.proposal;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;

@@ -1,4 +1,4 @@
-package org.javaguru.doc.generator.core.messagebroker;
+package org.javaguru.doc.generator.core.messagebroker.proposal;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
