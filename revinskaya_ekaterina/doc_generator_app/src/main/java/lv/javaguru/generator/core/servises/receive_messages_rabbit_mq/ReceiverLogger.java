@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class ReceiverLogger {
     private static final Logger logger = LoggerFactory.getLogger(ReceiverLogger.class);
 
-    public void log(String agreement) {
+    public void logAgreement(String agreement) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             String jsonString = mapper.writeValueAsString(agreement);
@@ -19,5 +19,11 @@ public class ReceiverLogger {
             logger.error(ex.getMessage());
         }
 
+    }
+    public void logRetryCount(int currentRetryCount){
+        logger.info("CURRENT RETRY COUNT IS: "+currentRetryCount);
+    }
+    public void logError(String exception){
+        logger.error("Get error by trying to process message: " + exception);
     }
 }
