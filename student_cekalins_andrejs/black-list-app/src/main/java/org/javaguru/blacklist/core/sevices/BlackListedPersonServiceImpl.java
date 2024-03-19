@@ -17,14 +17,14 @@ import java.util.List;
 public class BlackListedPersonServiceImpl implements BlackListedPersonService {
 
     @Autowired
-    private BlackListedPersonValidator blackListedPersonValidator;
+    private BlackListedPersonValidator personValidator;
 
     @Autowired
     private BlackListedPersonEntityRepository repository;
 
     @Override
     public BlackListedPersonCoreResult check(BlackListedPersonCoreCommand command) {
-        List<ValidationErrorDTO> errors = blackListedPersonValidator.validate(command.getPersonDTO());
+        List<ValidationErrorDTO> errors = personValidator.validate(command.getPersonDTO());
         if (errors.isEmpty()) {
             BlackListedPersonDTO personDTO = command.getPersonDTO();
             boolean isBlacklisted = repository.findBy(

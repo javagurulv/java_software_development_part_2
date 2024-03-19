@@ -6,6 +6,7 @@ import org.javaguru.blacklist.core.api.BlackListedPersonDTO;
 import org.javaguru.blacklist.core.api.ValidationErrorDTO;
 import org.javaguru.blacklist.core.domain.BlackListedPersonEntity;
 import org.javaguru.blacklist.core.repositories.BlackListedPersonEntityRepository;
+import org.javaguru.blacklist.core.sevices.BlackListedPersonServiceImpl;
 import org.javaguru.blacklist.core.validations.BlackListedPersonValidator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

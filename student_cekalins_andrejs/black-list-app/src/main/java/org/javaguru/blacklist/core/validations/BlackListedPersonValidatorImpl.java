@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class BlackListedPersonValidatorImpl implements BlackListedPersonValidator {
+class BlackListedPersonValidatorImpl implements BlackListedPersonValidator {
 
     @Autowired
     private ValidationErrorFactory errorFactory;
@@ -20,7 +20,7 @@ public class BlackListedPersonValidatorImpl implements BlackListedPersonValidato
         List<ValidationErrorDTO> errors = new ArrayList<>();
         validatePersonFirstName(personDTO).ifPresent(errors::add);
         validatePersonLastName(personDTO).ifPresent(errors::add);
-        validatePeronCode(personDTO).ifPresent(errors::add);
+        validatePersonCode(personDTO).ifPresent(errors::add);
 
 
         return errors;
@@ -33,18 +33,18 @@ public class BlackListedPersonValidatorImpl implements BlackListedPersonValidato
     }
 
     private Optional<ValidationErrorDTO> validatePersonLastName(BlackListedPersonDTO personDTO) {
-        return (personDTO.getPersonFirstName() == null || personDTO.getPersonFirstName().isEmpty())
+        return (personDTO.getPersonLastName() == null || personDTO.getPersonLastName().isEmpty())
                 ? Optional.of(errorFactory.buildError("ERROR_CODE_2"))
                 : Optional.empty();
     }
 
-    public Optional<ValidationErrorDTO> validatePeronCode(BlackListedPersonDTO personDTO) {
-        return (personCodeIsNullOrBlank(personDTO))
+    public Optional<ValidationErrorDTO> validatePersonCode(BlackListedPersonDTO personDTO) {
+        return (personCodeIsNullOrEmpty(personDTO))
                 ? Optional.of(errorFactory.buildError("ERROR_CODE_3"))
                 : Optional.empty();
     }
-    private boolean personCodeIsNullOrBlank(BlackListedPersonDTO personDTO) {
-        return personDTO.getPersonCode() == null || personDTO.getPersonCode().isBlank();
+    private boolean personCodeIsNullOrEmpty(BlackListedPersonDTO personDTO) {
+        return personDTO.getPersonCode() == null || personDTO.getPersonCode().isEmpty();
     }
 
 
