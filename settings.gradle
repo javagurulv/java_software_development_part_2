@@ -3,6 +3,7 @@ include 'revinskaya_ekaterina:insurance_calculator_app'
 include 'revinskaya_ekaterina:doc_generator_app'
 include 'student_cekalins_andrejs:doc-generator-app'
 include 'student_cekalins_andrejs:insurance_calculator_v2'
+include 'student_cekalins_andrejs:black-list-app'
 include 'student_andrejs_sidenko:insurance_calculator_app'
 include 'student_tarasova_oksana:insurance_calculator_app'
 include 'student_tarasova_oksana:doc_generator_app'
@@ -80,4 +81,6 @@ include 'teacher:step_40_elk:elk:filebeat'
 
 
 include 'teacher:step_utils'
+include 'student_cekalins_andrejs:black-list-app'
+findProject(':student_cekalins_andrejs:black-list-app')?.name = 'black-list-app'
 
