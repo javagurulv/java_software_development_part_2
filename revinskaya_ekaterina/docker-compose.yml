@@ -18,7 +18,8 @@ services:
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: insurance-calc
+    volumes:
+        - ./mysql-database-init:/docker-entrypoint-initdb.d
     ports:
       - "3000:3306"
 
