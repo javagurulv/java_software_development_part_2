@@ -1,20 +1,27 @@
 package org.javaguru.travel.insurance.core.services;
 
-import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.List;
 import org.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCoreCommand;
 import org.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCoreResult;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.domain.entities.AgreementEntity;
+import org.javaguru.travel.insurance.core.messagebroker.ProposalGeneratorQueueSender;
+import org.javaguru.travel.insurance.core.services.AgreementEntityFactory;
+import org.javaguru.travel.insurance.core.services.AgreementPersonsPremiumCalculator;
+import org.javaguru.travel.insurance.core.services.AgreementTotalPremiumCalculator;
+import org.javaguru.travel.insurance.core.services.TravelCalculatePremiumServiceImpl;
 import org.javaguru.travel.insurance.core.validations.TravelAgreementValidator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.math.BigDecimal;
+import java.util.Collections;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -25,6 +32,7 @@ public class TravelCalculatePremiumServiceImplTest {
     @Mock private AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator;
     @Mock private AgreementTotalPremiumCalculator agreementTotalPremiumCalculator;
     @Mock private AgreementEntityFactory agreementEntityFactory;
+    @Mock private ProposalGeneratorQueueSender proposalGeneratorQueueSender;
 
     @InjectMocks
     private TravelCalculatePremiumServiceImpl premiumService;
