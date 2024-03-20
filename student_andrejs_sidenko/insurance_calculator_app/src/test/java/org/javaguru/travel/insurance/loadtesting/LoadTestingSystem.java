@@ -7,7 +7,7 @@ class LoadTestingSystem {
 
     public static void main(String[] args) {
         new LoadTestingSystem().executeForAMinute(4, 6000);
-    }   //This method demonstrates load testing using multiple threads
+    }
 
     public void executeForAMinute(int parallelThreadCount, int requestCount) {
         long intervalBetweenRequestsInMillis = 60000L / requestCount;

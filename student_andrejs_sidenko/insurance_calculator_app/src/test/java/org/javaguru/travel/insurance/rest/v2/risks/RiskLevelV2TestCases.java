@@ -11,7 +11,7 @@ public class RiskLevelV2TestCases extends TravelCalculatePremiumControllerV2Test
     @Test
     @DisplayName("Success case with [TRAVEL_MEDICAL, TRAVEL_CANCELLATION]")
     public void executeTestCase1() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/Success_TRAVEL_MEDICAL_TRAVEL_CANCELLATION", true);
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/Success_TRAVEL_MEDICAL_TRAVEL_CANCELLATION",true);
     }
 
     @Test
