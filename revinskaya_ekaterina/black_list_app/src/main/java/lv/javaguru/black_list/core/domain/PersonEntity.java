@@ -1,4 +1,4 @@
-package lv.javaguru.black_list.domain;
+package lv.javaguru.black_list.core.domain;
 
 
 import lombok.Getter;
