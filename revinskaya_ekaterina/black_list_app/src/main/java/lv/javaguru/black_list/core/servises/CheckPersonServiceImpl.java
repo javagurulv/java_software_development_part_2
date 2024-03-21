@@ -31,6 +31,7 @@ class CheckPersonServiceImpl implements CheckPersonService {
 
     private CoreResult buildSuccessResponse(PersonDTO personDTO) {
         boolean presentInList = repository.existByPersonalCode(personDTO.getPersonalCode());
-        return new CoreResult(personDTO, presentInList);
+        personDTO.setBlackListed(presentInList);
+        return new CoreResult(personDTO);
     }
 }
