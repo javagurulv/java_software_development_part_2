@@ -14,7 +14,7 @@ class PersonalCodeRequestValidator implements RequestValidator{
     ValidationErrorConstructor errorConstructor;
     @Override
     public Optional<ValidationErrorDTO> validate(PersonDTO personDTO){
-        return personDTO.getPersonalCode() == null || personDTO.getPersonalCode().isEmpty()
+        return  personDTO != null && (personDTO.getPersonalCode() == null || personDTO.getPersonalCode().isEmpty())
                 ? Optional.of(errorConstructor.constructError("ERROR_CODE_3")) : Optional.empty();
     }
 }

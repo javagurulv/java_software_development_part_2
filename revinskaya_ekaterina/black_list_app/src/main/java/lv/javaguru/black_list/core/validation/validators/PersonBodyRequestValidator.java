@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-class LastNameRequestValidator implements RequestValidator{
+class PersonBodyRequestValidator implements RequestValidator{
     @Autowired
     ValidationErrorConstructor errorConstructor;
     @Override
     public Optional<ValidationErrorDTO> validate(PersonDTO personDTO){
-        return  personDTO != null && (personDTO.getLastName() == null || personDTO.getLastName().isEmpty())
-                ? Optional.of(errorConstructor.constructError("ERROR_CODE_2")) : Optional.empty();
+        return personDTO == null ? Optional.of(errorConstructor.constructError("ERROR_CODE_4"))
+                : Optional.empty();
     }
 }

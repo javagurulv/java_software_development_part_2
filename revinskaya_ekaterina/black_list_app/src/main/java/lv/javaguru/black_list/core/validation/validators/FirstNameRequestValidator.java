@@ -13,7 +13,7 @@ class FirstNameRequestValidator implements RequestValidator{
     ValidationErrorConstructor errorConstructor;
     @Override
     public Optional<ValidationErrorDTO> validate(PersonDTO personDTO){
-        return personDTO.getFirstName() == null || personDTO.getFirstName().isEmpty()
+        return personDTO != null && (personDTO.getFirstName() == null || personDTO.getFirstName().isEmpty())
                 ? Optional.of(errorConstructor.constructError("ERROR_CODE_1")) : Optional.empty();
     }
 }
