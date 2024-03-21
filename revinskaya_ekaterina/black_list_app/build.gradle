@@ -27,6 +27,8 @@ dependencies {
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test:2.7.5')
 	testImplementation('com.google.guava:guava:31.0.1-jre')
+	testImplementation('uk.org.webcompere:model-assert:1.0.0')
+
 
 	test {
 		useJUnitPlatform()
