@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/insurance/travel/api/v1")
 public
@@ -31,7 +33,8 @@ class TravelCalculatePremiumControllerV1 {
     @PostMapping(path = "/",
             consumes = "application/json",
             produces = "application/json")
-    public TravelCalculatePremiumResponseV1 calculatePremium(@RequestBody TravelCalculatePremiumRequestV1 request) {
+    public TravelCalculatePremiumResponseV1 calculatePremium(@RequestBody TravelCalculatePremiumRequestV1 request)
+            throws IOException, InterruptedException {
         loggerForRequest.log(request);
         Stopwatch stopwatch = Stopwatch.createStarted();
         TravelCalculatePremiumCoreCommand command = dtoV1Converter.commandFromRequestV1(request);

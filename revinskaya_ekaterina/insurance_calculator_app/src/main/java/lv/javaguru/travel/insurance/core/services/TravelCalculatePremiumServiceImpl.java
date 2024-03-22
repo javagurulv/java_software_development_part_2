@@ -3,7 +3,9 @@ package lv.javaguru.travel.insurance.core.services;
 import lv.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCoreCommand;
 import lv.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCoreResult;
 import lv.javaguru.travel.insurance.core.api.dto.AgreementDTO;
+import lv.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import lv.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
+import lv.javaguru.travel.insurance.core.services.blacklist.CheckBlackListService;
 import lv.javaguru.travel.insurance.core.services.calculators.CalculatorForTotalAgreementPremium;
 import lv.javaguru.travel.insurance.core.services.calculators.CalculatorRiskPremiumsForAllPersons;
 import lv.javaguru.travel.insurance.core.services.savers.PolicySaver;
@@ -13,8 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
+
 @Transactional
 @Component
 class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService {
@@ -28,17 +32,33 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
     private PolicySaver policySaver;
     @Autowired
     private SendAgreementService sendAgreementService;
-    @Override
-    public TravelCalculatePremiumCoreResult calculatePremium(TravelCalculatePremiumCoreCommand command) {
 
-        List<ValidationErrorDTO> errors = agreementValidator.validate(command.getAgreement());
-        if (!errors.isEmpty()) {
-            return buildErrorResponse(errors);
+    @Autowired
+    private CheckBlackListService checkBlackListService;
+
+    @Override
+    public TravelCalculatePremiumCoreResult calculatePremium(TravelCalculatePremiumCoreCommand command)
+            throws IOException, InterruptedException {
+
+        List<ValidationErrorDTO> validationErrors = agreementValidator.validate(command.getAgreement());
+        if (!validationErrors.isEmpty()) {
+            return buildValidationErrorResponse(validationErrors);
         }
-        return buildSuccessResponse(command.getAgreement());
+        List<ValidationErrorDTO> personInBlackListErrors = checkPersonsPresentInBlackList(command.getAgreement().getPersons());
+        return personInBlackListErrors.isEmpty()
+                ? buildSuccessResponse(command.getAgreement()) :
+                buildPersonInBlackListErrorResponse(personInBlackListErrors);
     }
 
-    private TravelCalculatePremiumCoreResult buildErrorResponse(List<ValidationErrorDTO> errors) {
+    private List<ValidationErrorDTO> checkPersonsPresentInBlackList(List<PersonDTO> persons) throws IOException, InterruptedException {
+        return checkBlackListService.checkPersons(persons);
+    }
+
+    private TravelCalculatePremiumCoreResult buildPersonInBlackListErrorResponse(List<ValidationErrorDTO> errors) {
+        return new TravelCalculatePremiumCoreResult(errors);
+    }
+
+    private TravelCalculatePremiumCoreResult buildValidationErrorResponse(List<ValidationErrorDTO> errors) {
         return new TravelCalculatePremiumCoreResult(errors);
     }
 
@@ -52,7 +72,6 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
         //sendAgreementService.sendAgreement(agreementDTO);
         return coreResult;
     }
-
 
 
 }

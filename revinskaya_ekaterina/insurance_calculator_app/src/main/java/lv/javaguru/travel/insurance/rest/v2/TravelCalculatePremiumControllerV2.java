@@ -35,7 +35,7 @@ class TravelCalculatePremiumControllerV2 {
             consumes = "application/json",
             produces = "application/json")
     public TravelCalculatePremiumResponseV2 calculatePremium(@RequestBody TravelCalculatePremiumRequestV2 request)
-            throws IOException, TimeoutException {
+            throws IOException, TimeoutException, InterruptedException {
         loggerForRequest.log(request);
         Stopwatch stopwatch = Stopwatch.createStarted();
         TravelCalculatePremiumCoreCommand command = dtoV2Converter.commandFromRequestV2(request);

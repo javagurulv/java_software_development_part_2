@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.io.IOException;
+
 @Controller
 public class TravelInsuranceControllerV1 {
     @Autowired
@@ -28,7 +30,7 @@ public class TravelInsuranceControllerV1 {
 
     @PostMapping("/insurance/travel/web/v1")
     public String processForm(@ModelAttribute(value = "request") TravelCalculatePremiumRequestV1 request,
-                              ModelMap modelMap) {
+                              ModelMap modelMap) throws IOException, InterruptedException {
         TravelCalculatePremiumCoreCommand command = dtoV1Converter.commandFromRequestV1(request);
         TravelCalculatePremiumCoreResult coreResult = service.calculatePremium(command);
         TravelCalculatePremiumResponseV1 response = dtoV1Converter.buildResponseV1fromCoreResult(coreResult);

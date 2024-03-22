@@ -1,4 +1,4 @@
-package lv.javaguru.black_list.core.api.dto;
+package lv.javaguru.travel.insurance.core.services.blacklist.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ValidationErrorDTO {
     private String errorCode;
-    private String description;
+    private String errorDescription;
 }
