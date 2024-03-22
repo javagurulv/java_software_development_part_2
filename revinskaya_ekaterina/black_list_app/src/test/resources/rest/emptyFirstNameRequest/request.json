@@ -1,8 +1,5 @@
 {
-      "person" :
-        {
-          "personFirstName" : "",
-          "personLastName" : "Pupkin",
-          "personCode" : "12345-62345"
-        }
+  "personFirstName": "",
+  "personLastName": "Pupkin",
+  "personCode": "12345-62345"
 }

@@ -1,8 +1,6 @@
 {
-    "person": {
-        "firstName": "Vasja",
-        "lastName": "Pupkin",
-        "personalCode": "123456-12345",
-        "blackListed": true
-    }
+  "firstName": "Vasja",
+  "lastName": "Pupkin",
+  "personalCode": "123456-12345",
+  "blackListed": true
 }

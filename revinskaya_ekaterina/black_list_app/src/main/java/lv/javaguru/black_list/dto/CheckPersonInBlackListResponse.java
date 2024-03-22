@@ -16,10 +16,16 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CheckPersonInBlackListCoreResponse extends CoreResponse {
-    @JsonAlias("person")
-    private PersonDTO person;
-    public CheckPersonInBlackListCoreResponse(List<ValidationErrorDTO> errors){
+public class CheckPersonInBlackListResponse extends CoreResponse {
+    @JsonAlias("personFirstName")
+    private String firstName;
+    @JsonAlias("personLastName")
+    private String lastName;
+    @JsonAlias("personCode")
+    private String personalCode;
+    @JsonAlias("blackListed")
+    private Boolean blackListed;
+    public CheckPersonInBlackListResponse(List<ValidationErrorDTO> errors){
         super(errors);
     }
 }

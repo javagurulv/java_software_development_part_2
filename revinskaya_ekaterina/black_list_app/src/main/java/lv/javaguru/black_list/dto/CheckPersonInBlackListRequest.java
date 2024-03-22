@@ -13,6 +13,11 @@ import lv.javaguru.black_list.core.api.dto.PersonDTO;
 @NoArgsConstructor
 
 public class CheckPersonInBlackListRequest {
-    @JsonAlias("person")
-    private PersonDTO personDTO;
+    @JsonAlias("personFirstName")
+    private String firstName;
+    @JsonAlias("personLastName")
+    private String lastName;
+    @JsonAlias("personCode")
+    private String personalCode;
+
 }

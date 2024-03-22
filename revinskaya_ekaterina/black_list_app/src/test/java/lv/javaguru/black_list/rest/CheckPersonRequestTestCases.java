@@ -27,10 +27,6 @@ public class CheckPersonRequestTestCases extends CheckPersonBlackListControllerT
     public void requestWithEmptyPersonalCodeTest() throws Exception {
         equalsJsonFiles("emptyPersonalCodeRequest");
     }
-    @Test
-    public void requestWithNullPersonTest() throws Exception {
-        equalsJsonFiles("personNullRequest");
-    }
 
     @Test
     public void requestPersonNotPresentInListTest() throws Exception {

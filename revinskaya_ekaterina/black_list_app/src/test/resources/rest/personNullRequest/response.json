@@ -1,8 +1,0 @@
-{
-    "errors": [
-        {
-            "errorCode": "ERROR_CODE_4",
-            "errorDescription": "Field person must not be empty!"
-        }
-    ]
-}
