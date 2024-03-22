@@ -7,5 +7,5 @@ import java.io.IOException;
 import java.util.List;
 
 public interface CheckBlackListService {
-    List<ValidationErrorDTO> checkPersons(List<PersonDTO> persons) throws IOException, InterruptedException;
+    List<ValidationErrorDTO> checkPersons(List<PersonDTO> persons);
 }

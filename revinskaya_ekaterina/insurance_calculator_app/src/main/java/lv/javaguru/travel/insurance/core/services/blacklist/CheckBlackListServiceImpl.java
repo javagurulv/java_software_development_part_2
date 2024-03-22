@@ -8,6 +8,7 @@ import lv.javaguru.travel.insurance.core.util.Placeholder;
 import lv.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -21,6 +22,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
+@Profile({"mysql-local", "mysql-container", "h2"})
 class CheckBlackListServiceImpl implements CheckBlackListService {
     @Value("${blacklist.check.url}")
     private String blacklistCheckUrl;
@@ -31,7 +33,7 @@ class CheckBlackListServiceImpl implements CheckBlackListService {
     private ValidationErrorFactory validationErrorFactory;
 
     @Override
-    public List<ValidationErrorDTO> checkPersons(List<PersonDTO> persons) throws IOException, InterruptedException {
+    public List<ValidationErrorDTO> checkPersons(List<PersonDTO> persons){
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 

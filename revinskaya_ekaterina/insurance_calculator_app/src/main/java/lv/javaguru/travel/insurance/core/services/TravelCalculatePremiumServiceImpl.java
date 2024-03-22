@@ -11,6 +11,7 @@ import lv.javaguru.travel.insurance.core.services.calculators.CalculatorRiskPrem
 import lv.javaguru.travel.insurance.core.services.savers.PolicySaver;
 import lv.javaguru.travel.insurance.core.services.send_agreement_service.SendAgreementService;
 import lv.javaguru.travel.insurance.core.validations.TravelAgreementValidator;
+import lv.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +36,8 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
 
     @Autowired
     private CheckBlackListService checkBlackListService;
+    @Autowired
+    private ValidationErrorFactory validationErrorFactory;
 
     @Override
     public TravelCalculatePremiumCoreResult calculatePremium(TravelCalculatePremiumCoreCommand command)
@@ -44,10 +47,15 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
         if (!validationErrors.isEmpty()) {
             return buildValidationErrorResponse(validationErrors);
         }
-        List<ValidationErrorDTO> personInBlackListErrors = checkPersonsPresentInBlackList(command.getAgreement().getPersons());
-        return personInBlackListErrors.isEmpty()
-                ? buildSuccessResponse(command.getAgreement()) :
-                buildPersonInBlackListErrorResponse(personInBlackListErrors);
+        try{
+            List<ValidationErrorDTO> personInBlackListErrors = checkPersonsPresentInBlackList(command.getAgreement().getPersons());
+            return personInBlackListErrors.isEmpty()
+                    ? buildSuccessResponse(command.getAgreement()) :
+                    buildPersonInBlackListErrorResponse(personInBlackListErrors);
+        }
+        catch(Throwable e){
+            return buildNoConnectionToBlackListErrorResponse();
+        }
     }
 
     private List<ValidationErrorDTO> checkPersonsPresentInBlackList(List<PersonDTO> persons) throws IOException, InterruptedException {
@@ -56,6 +64,9 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
 
     private TravelCalculatePremiumCoreResult buildPersonInBlackListErrorResponse(List<ValidationErrorDTO> errors) {
         return new TravelCalculatePremiumCoreResult(errors);
+    }
+    private TravelCalculatePremiumCoreResult buildNoConnectionToBlackListErrorResponse() {
+        return new TravelCalculatePremiumCoreResult(List.of(validationErrorFactory.buildError("ERROR_CODE_25")));
     }
 
     private TravelCalculatePremiumCoreResult buildValidationErrorResponse(List<ValidationErrorDTO> errors) {
