@@ -14,7 +14,7 @@ public class JobSendXML implements Runnable {
 
     @Override
     public void run() {
-        sendAgreementService.sendAgreementXML(filename);
+        //sendAgreementService.sendAgreementXML(filename);
     }
 
 }

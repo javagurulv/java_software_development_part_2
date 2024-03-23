@@ -39,14 +39,14 @@ dependencies {
 
 bootJar {
 	enabled = true
-	archiveBaseName = 'black_list'
+	archiveBaseName = 'black-list'
 	archiveVersion = '1.0.0'
 }
 
 docker {
 	dependsOn bootJar
-	name "black_list:1.0.0"
-	files 'build/libs/black_list-1.0.0.jar'
+	name "black-list:1.0.0"
+	files 'build/libs/black-list-1.0.0.jar'
 	files 'wait-for-it.sh'
-	buildArgs(['JAR_FILE': "black_list-1.0.0.jar"])
+	buildArgs(['JAR_FILE': "black-list-1.0.0.jar"])
 }
