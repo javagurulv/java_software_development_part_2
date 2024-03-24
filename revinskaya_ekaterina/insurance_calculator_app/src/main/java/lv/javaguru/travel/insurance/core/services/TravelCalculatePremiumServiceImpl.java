@@ -12,6 +12,9 @@ import lv.javaguru.travel.insurance.core.services.savers.PolicySaver;
 import lv.javaguru.travel.insurance.core.services.send_agreement_service.SendAgreementService;
 import lv.javaguru.travel.insurance.core.validations.TravelAgreementValidator;
 import lv.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
+import lv.javaguru.travel.insurance.rest.v1.TravelCalculatePremiumRequestLoggerV1;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +26,9 @@ import java.util.List;
 @Transactional
 @Component
 class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService {
+
+    private static final Logger logger = LoggerFactory.getLogger(TravelCalculatePremiumServiceImpl.class);
+
     @Autowired
     private TravelAgreementValidator agreementValidator;
     @Autowired
@@ -54,6 +60,7 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
                     buildPersonInBlackListErrorResponse(personInBlackListErrors);
         }
         catch(Throwable e){
+            logger.error("BlackList error!!!", e);
             return buildNoConnectionToBlackListErrorResponse();
         }
     }

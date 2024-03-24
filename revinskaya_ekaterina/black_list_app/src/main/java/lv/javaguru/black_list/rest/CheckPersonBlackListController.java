@@ -21,7 +21,7 @@ public class CheckPersonBlackListController {
     @PostMapping(path = "/person/check",
             consumes = "application/json",
             produces = "application/json")
-    CheckPersonInBlackListResponse checkPerson(@RequestBody CheckPersonInBlackListRequest request) {
+    public CheckPersonInBlackListResponse checkPerson(@RequestBody CheckPersonInBlackListRequest request) {
         PersonDTO personDTO = new PersonDTO();
         personDTO.setFirstName(request.getFirstName());
         personDTO.setLastName(request.getLastName());
