@@ -81,6 +81,11 @@ include 'teacher:step_40_elk:doc-generator-app'
 include 'teacher:step_40_elk:black-list-app'
 include 'teacher:step_40_elk:elk:filebeat'
 
+include 'teacher:step_41_elk_traceId:insurance-calculator-app'
+include 'teacher:step_41_elk_traceId:doc-generator-app'
+include 'teacher:step_41_elk_traceId:black-list-app'
+include 'teacher:step_41_elk_traceId:elk:filebeat'
+
 
 include 'teacher:step_utils'
 include 'student_cekalins_andrejs:black-list-app'

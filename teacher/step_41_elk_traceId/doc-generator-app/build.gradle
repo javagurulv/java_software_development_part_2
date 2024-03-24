@@ -1,0 +1,70 @@
+plugins {
+	id 'org.springframework.boot' version "2.7.5"
+	id 'com.palantir.docker' version '0.35.0'
+/*
+	id 'checkstyle'
+*/
+}
+
+/*
+checkstyle {
+	configFile = 'config/checkstyle/checkstyle.xml' as File
+}
+*/
+
+dependencies {
+
+	implementation('org.springframework.boot:spring-boot-starter-web:2.7.5')
+
+	implementation('org.springframework.boot:spring-boot-starter-amqp:2.7.5')
+
+	implementation('org.springframework.cloud:spring-cloud-starter-sleuth:3.1.11')
+
+	implementation('net.logstash.logback:logstash-logback-encoder:6.6')
+
+	implementation('com.fasterxml.jackson.core:jackson-core:2.14.2')
+	implementation('com.google.guava:guava:31.0.1-jre')
+
+	implementation('org.apache.pdfbox:pdfbox:2.0.29')
+	implementation('org.apache.pdfbox:pdfbox-tools:2.0.29')
+
+	compileOnly('org.projectlombok:lombok:1.18.24')
+	annotationProcessor('org.projectlombok:lombok:1.18.24')
+
+	testCompileOnly('org.projectlombok:lombok:1.18.24')
+	testAnnotationProcessor('org.projectlombok:lombok:1.18.24')
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test:2.7.5')
+
+	testImplementation('org.hamcrest:hamcrest:2.2')
+
+	testImplementation('uk.org.webcompere:model-assert:1.0.0')
+
+	test {
+		useJUnitPlatform()
+	}
+
+}
+
+jar {
+	enabled = false
+}
+
+bootJar {
+	enabled = true
+	archiveBaseName = 'doc-generator'
+	archiveVersion = '1.0.2'
+}
+
+clean.doFirst {
+	delete "${projectDir}/logs/"
+	println "${projectDir}/logs/"
+}
+
+docker {
+	dependsOn bootJar
+	name "doc-generator:1.0.2"
+	files 'build/libs/doc-generator-1.0.2.jar'
+	files 'wait-for-it.sh'
+	buildArgs(['JAR_FILE': "doc-generator-1.0.2.jar"])
+}
