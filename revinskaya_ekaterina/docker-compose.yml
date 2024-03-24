@@ -49,9 +49,9 @@ services:
       container_name: file-storage-container
       image: file-storage:1.0.0
       volumes:
-        - ./file_storage/docs/pdf_file_storage:/app/docs/pdf_file_storage
+        - ./file_storage_app/docs/pdf_file_storage:/app/docs/pdf_file_storage
       ports:
-       - "8000:8000"
+       - "8000:8080"
       depends_on:
        - doc-generator
 

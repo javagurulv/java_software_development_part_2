@@ -8,7 +8,11 @@ import org.springframework.stereotype.Component;
 public class SenderLogger {
     private static final Logger logger = LoggerFactory.getLogger(SenderLogger.class);
 
-    public void log(int status) {
-        logger.info("status:\n" + status);
+    public void log(String message) {
+        logger.info("DOC GENERATOR SEND FILE TO FILE STORAGE:\n" + message);
     }
+    public void logError(String message) {
+        logger.info("DOC GENERATOR SEND FILE TO FILE STORAGE ERROR:\n" + message);
+    }
+
 }

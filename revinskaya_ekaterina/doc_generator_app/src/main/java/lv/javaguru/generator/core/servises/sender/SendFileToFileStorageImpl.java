@@ -1,37 +1,52 @@
 package lv.javaguru.generator.core.servises.sender;
 
+import lv.javaguru.generator.core.servises.sender.dto.SaveFileResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
+
 
 @Component
-class SendFileToFileStorageImpl implements SendFileToFileStorage{
+class SendFileToFileStorageImpl implements SendFileToFileStorage {
     @Value("${proposals.directory.path}")
     private String proposalsDirectoryPath;
 
+    @Value("${file-storage.pdf-file-saver.url}")
+    private String pdfFileSaverURL;
+
     @Autowired
     private SenderLogger senderLogger;
+
+    @Autowired
+    private RestTemplate restTemplate;
+
     @Override
-    public void sendToFileStorage(String uuid) throws IOException, InterruptedException {
+    public void sendToFileStorage(String uuid){
         String filePath = proposalsDirectoryPath + "/agreement-" + uuid + ".pdf";
 
-        byte[] fileBytes = Files.readAllBytes(Paths.get(filePath));
-        HttpClient httpClient = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://file-storage-container:8000/pdf-file-saver/" + uuid))
-                .header("Content-Type", "multipart/form-data; boundary=j43g2j464jl4tl4ly445b")
-                .POST(HttpRequest.BodyPublishers.ofByteArray(fileBytes))
-                .build();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+        MultiValueMap<String, Object> requestBody = new LinkedMultiValueMap<>();
+        requestBody.add("file", new FileSystemResource(filePath));
 
-        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        senderLogger.log(response.statusCode());
+        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(requestBody, headers);
+        try {
+            SaveFileResponse response = restTemplate.postForObject(pdfFileSaverURL + uuid,
+                    requestEntity, SaveFileResponse.class);
+            senderLogger.log("success sent to file-storage by filePath " + response.getFilePath()
+                    + " for agreement with uuid " + response.getAgreementUuid());
+
+        } catch (RestClientException e) {
+            senderLogger.logError(e.getMessage());
+        }
     }
 }

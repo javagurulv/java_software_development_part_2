@@ -27,27 +27,10 @@ public class SaveFileController {
             consumes = { MediaType.MULTIPART_FORM_DATA_VALUE },
             produces = "application/json"
             )
-    SaveFileResponse saveFile(@RequestParam MultipartFile file, @PathVariable String uuid) throws IOException {
+    SaveFileResponse saveFile(@RequestParam("file") MultipartFile file, @PathVariable String uuid) throws IOException {
         File receiveFile = new File(proposalsDirectoryPath + "/agreement-" + uuid + ".pdf");
         file.transferTo(receiveFile);
         return new SaveFileResponse("bucket@agreement-"+uuid+"-pdf_file_storage", uuid);
-    }
-
-    @GetMapping(path = "/bucket@{fileName}-{bucket}",
-            produces = "application/pdf"
-    )
-    ResponseEntity getFile(@PathVariable String fileName, @PathVariable String bucket) throws IOException {
-         Path path = Paths.get("/" + bucket + "/" + fileName + ".pdf");
-        Resource resource = null;
-        try {
-            resource = new UrlResource(path.toUri());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType("application/pdf"))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-                .body(resource);
     }
 }
 
