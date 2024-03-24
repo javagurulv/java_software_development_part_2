@@ -1,4 +1,4 @@
-package lv.javaguru.generator.core.servises.sender;
+package lv.javaguru.generator.core.servises.send_to_file_storage;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

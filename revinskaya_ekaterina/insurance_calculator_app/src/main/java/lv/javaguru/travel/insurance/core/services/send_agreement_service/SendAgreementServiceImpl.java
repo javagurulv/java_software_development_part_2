@@ -1,12 +1,10 @@
 package lv.javaguru.travel.insurance.core.services.send_agreement_service;
 
 import lv.javaguru.travel.insurance.core.api.dto.AgreementDTO;
-import lv.javaguru.travel.insurance.core.services.send_agreement_service.send_messages_rabbit_mq.MessageSender;
+import lv.javaguru.travel.insurance.core.services.send_agreement_service.rabbit_mq_messages.MessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-
-import java.io.File;
 
 @Component
 @Profile("mysql-container")

@@ -1,6 +1,7 @@
-package lv.javaguru.generator.core.servises.sender;
+package lv.javaguru.generator.core.servises.send_to_file_storage;
 
-import lv.javaguru.generator.core.servises.sender.dto.SaveFileResponse;
+import lv.javaguru.generator.core.servises.rabbit_mq.MessageSender;
+import lv.javaguru.generator.core.servises.send_to_file_storage.dto.SaveFileResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
@@ -29,6 +30,9 @@ class SendFileToFileStorageImpl implements SendFileToFileStorage {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private MessageSender messageSender;
+
     @Override
     public void sendToFileStorage(String uuid){
         String filePath = proposalsDirectoryPath + "/agreement-" + uuid + ".pdf";
@@ -44,6 +48,8 @@ class SendFileToFileStorageImpl implements SendFileToFileStorage {
                     requestEntity, SaveFileResponse.class);
             senderLogger.log("success sent to file-storage by filePath " + response.getFilePath()
                     + " for agreement with uuid " + response.getAgreementUuid());
+
+            messageSender.sendMessage(response);
 
         } catch (RestClientException e) {
             senderLogger.logError(e.getMessage());

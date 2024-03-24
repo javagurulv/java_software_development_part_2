@@ -1,4 +1,4 @@
-package lv.javaguru.generator.core.servises.sender;
+package lv.javaguru.generator.core.servises.send_to_file_storage;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

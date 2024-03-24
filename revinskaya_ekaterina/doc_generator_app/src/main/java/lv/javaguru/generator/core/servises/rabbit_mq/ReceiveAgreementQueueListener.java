@@ -1,7 +1,7 @@
-package lv.javaguru.generator.core.servises.receive_messages_rabbit_mq;
+package lv.javaguru.generator.core.servises.rabbit_mq;
 
 import lv.javaguru.generator.core.servises.conver_to_pdf.ConvertToPDFService;
-import lv.javaguru.generator.core.servises.sender.SendFileToFileStorage;
+import lv.javaguru.generator.core.servises.send_to_file_storage.SendFileToFileStorage;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -17,7 +17,7 @@ public class ReceiveAgreementQueueListener {
     private int totalRetryCount;
 
     @Autowired
-    private ReceiverLogger logger;
+    private MessageLogger logger;
     @Autowired
     private SendFileToFileStorage sendFileToFileStorage;
     @Autowired
@@ -27,7 +27,7 @@ public class ReceiveAgreementQueueListener {
     private RabbitTemplate rabbitTemplate;
 
     @RabbitListener(queues = RabbitConfig.QUEUE_PROPOSAL_GENERATION)
-    public void receiveMessage(Message message) throws IOException, InterruptedException {
+    public void receiveMessage(Message message){
         try {
             processMessage(message);
         } catch (Exception e) {
@@ -39,7 +39,7 @@ public class ReceiveAgreementQueueListener {
 
     void processMessage(Message message) throws IOException, InterruptedException {
         String messageBody = new String(message.getBody());
-        logger.logAgreement(messageBody);
+        logger.logReceivedAgreement(messageBody);
         String uuid = convertToPDFService.convertAgreementToPDF(messageBody);
         sendFileToFileStorage.sendToFileStorage(uuid);
     }

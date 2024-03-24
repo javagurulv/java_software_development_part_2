@@ -3,7 +3,7 @@ package lv.javaguru.travel.insurance.core.services.send_agreement_service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lv.javaguru.travel.insurance.core.api.dto.AgreementDTO;
-import lv.javaguru.travel.insurance.core.services.send_agreement_service.send_messages_rabbit_mq.MessageSender;
+import lv.javaguru.travel.insurance.core.services.send_agreement_service.rabbit_mq_messages.MessageSender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

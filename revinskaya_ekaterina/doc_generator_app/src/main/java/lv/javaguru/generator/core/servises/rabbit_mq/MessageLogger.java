@@ -1,4 +1,4 @@
-package lv.javaguru.generator.core.servises.receive_messages_rabbit_mq;
+package lv.javaguru.generator.core.servises.rabbit_mq;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,10 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ReceiverLogger {
-    private static final Logger logger = LoggerFactory.getLogger(ReceiverLogger.class);
+public class MessageLogger {
+    private static final Logger logger = LoggerFactory.getLogger(MessageLogger.class);
 
-    public void logAgreement(String agreement) {
+    public void logReceivedAgreement(String agreement) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             String jsonString = mapper.writeValueAsString(agreement);
@@ -26,4 +26,6 @@ public class ReceiverLogger {
     public void logError(String exception){
         logger.error("Get error by trying to process message: " + exception);
     }
+    public void logSentResponse(String m){logger.error("DOC GENERATOR SEND SUCCESS RESPONSE " +
+            "WITH FILE INFO TO INSURANCE CALCULATOR: "+ m);}
 }
