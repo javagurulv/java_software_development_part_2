@@ -1,0 +1,15 @@
+- module: http
+  metricsets: ["json"]
+  period: 10s
+  hosts: ["http://insurance-calc-container:8080/actuator/metrics/http.server.requests", "http://black-list-container:8080/actuator/metrics/http.server.requests"]
+  namespace: "insurance-calc_rest"
+  path: "/"
+  body: ""
+  method: "GET"
+  # Authentication (if required):
+  # authentication:
+  #   basic:
+  #     username: "user"
+  #     password: "password"
+  json.is_array: false
+  dedot.enabled: true
