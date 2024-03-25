@@ -1,4 +1,4 @@
-package lv.javaguru.travel.insurance.core.services.savers.entity_savers;
+package lv.javaguru.travel.insurance.core.services.entities_to_db_savers.entity_savers;
 
 import lv.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import lv.javaguru.travel.insurance.core.domain.entity.AgreementEntity;

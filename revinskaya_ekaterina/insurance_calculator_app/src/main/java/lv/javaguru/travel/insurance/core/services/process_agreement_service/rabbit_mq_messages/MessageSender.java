@@ -1,4 +1,4 @@
-package lv.javaguru.travel.insurance.core.services.send_agreement_service.rabbit_mq_messages;
+package lv.javaguru.travel.insurance.core.services.process_agreement_service.rabbit_mq_messages;
 
 import lv.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
