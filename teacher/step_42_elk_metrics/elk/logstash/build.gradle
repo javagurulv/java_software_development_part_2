@@ -1,0 +1,9 @@
+plugins {
+	id 'com.palantir.docker' version '0.35.0'
+}
+
+
+docker {
+	name "my-custom-logstash:1.0.2"
+	files 'logstash.conf'
+}
