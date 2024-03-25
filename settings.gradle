@@ -9,6 +9,7 @@ include 'student_cekalins_andrejs:black-list-app'
 include 'student_andrejs_sidenko:insurance_calculator_app'
 include 'student_tarasova_oksana:insurance_calculator_app'
 include 'student_tarasova_oksana:doc_generator_app'
+include 'student_tarasova_oksana:black_list_app'
 
 include 'teacher:step_0'
 include 'teacher:step_1'
