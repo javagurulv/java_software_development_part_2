@@ -23,7 +23,7 @@
     </changeSet>
 
     <changeSet author="javaguru" id="2">
-        <createIndex indexName="ix_unique_black_listed_persons"
+        <createIndex indexName="ix_classifiers_title"
                      tableName="black_listed_persons"
                      unique="true">
             <column name="person_first_name"/>
