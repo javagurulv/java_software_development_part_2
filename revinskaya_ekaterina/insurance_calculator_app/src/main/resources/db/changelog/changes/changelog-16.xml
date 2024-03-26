@@ -14,4 +14,30 @@
             <column name="already_exported" type="boolean" defaultValue="false"/>
         </addColumn>
     </changeSet>
+
+    <changeSet author="katierevinska" id="47">
+        <createTable tableName="agreements_ack">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="agreement_uuid" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="already_exported" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="file_path" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="katierevinska" id="48">
+        <createIndex indexName="ix_agreement_uuid_file_path"
+                     tableName="agreements_ack"
+                     unique="true">
+            <column name="agreement_uuid"/>
+            <column name="file_path"/>
+        </createIndex>
+    </changeSet>
 </databaseChangeLog>

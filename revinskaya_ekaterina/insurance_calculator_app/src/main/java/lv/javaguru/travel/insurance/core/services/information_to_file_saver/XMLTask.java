@@ -1,17 +1,13 @@
 package lv.javaguru.travel.insurance.core.services.information_to_file_saver;
 
-import com.google.common.base.Stopwatch;
 import lv.javaguru.travel.insurance.core.repositories.entity.AgreementRepository;
-import lv.javaguru.travel.insurance.core.services.send_agreement_service.SendAgreementService;
+import lv.javaguru.travel.insurance.core.services.process_agreement_service.SendAgreementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 @Component
 public class XMLTask {

@@ -164,3 +164,15 @@ create table if not exists country_safety_rating_coefficient
 );
 CREATE UNIQUE INDEX if not exists ix_country_safety_rating_coefficient_country_ic
 ON country_safety_rating_coefficient (country_ic);
+
+create table if not exists agreements_ack
+(
+  id bigint not null auto_increment,
+  agreement_uuid varchar(36) not null,
+  already_exported BOOLEAN not null,
+  file_path varchar(200) not null,
+  primary key(id)
+);
+
+CREATE UNIQUE INDEX if not exists ix_agreement_uuid_file_path
+ON agreements_ack(agreement_uuid, file_path);

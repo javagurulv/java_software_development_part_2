@@ -1,6 +1,6 @@
 package lv.javaguru.travel.insurance.core.services.information_to_file_saver;
 
-import lv.javaguru.travel.insurance.core.services.send_agreement_service.SendAgreementService;
+import lv.javaguru.travel.insurance.core.services.process_agreement_service.SendAgreementService;
 
 public class JobSendXML implements Runnable {
 
