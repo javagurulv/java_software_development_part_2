@@ -19,16 +19,14 @@ class PersonBlacklistedCheckValidation extends TravelPersonFieldValidationImpl {
 
     private static final Logger logger = LoggerFactory.getLogger(PersonBlacklistedCheckValidation.class);
 
-    @Autowired
-    private BlackListPersonCheckService blackListPersonCheckService;
-    @Autowired
-    private ValidationErrorFactory errorFactory;
+    @Autowired private BlackListPersonCheckService blackListPersonCheckService;
+    @Autowired private ValidationErrorFactory errorFactory;
 
     @Override
     public Optional<ValidationErrorDTO> validate(AgreementDTO agreement, PersonDTO person) {
-        return (!personFirstNameIsNullOrBlank(person) &&
-                !personLastNameIsNullOrBlank(person) &&
-                !personCodeIsNullOrBlank(person))
+        return (!personFirstNameIsNullOrBlank(person)
+                && !personLastNameIsNullOrBlank(person)
+                && !personCodeIsNullOrBlank(person))
                 ? personBlackListedCheck(person)
                 : Optional.empty();
     }
