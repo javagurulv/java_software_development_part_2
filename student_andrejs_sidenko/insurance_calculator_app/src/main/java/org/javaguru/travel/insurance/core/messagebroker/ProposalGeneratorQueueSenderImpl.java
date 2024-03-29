@@ -6,14 +6,18 @@ import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile({"h2", "mysql-local"})
-class ProposalGeneratorQueueSenderStubImpl implements ProposalGeneratorQueueSender {
+@Profile("mysql-container")
+class ProposalGeneratorQueueSenderImpl implements ProposalGeneratorQueueSender {
 
-    private static final Logger logger = LoggerFactory.getLogger(ProposalGeneratorQueueSenderStubImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProposalGeneratorQueueSenderImpl.class);
+
+    @Autowired private RabbitTemplate rabbitTemplate;
 
     @Override
     public void send(AgreementDTO agreement) {
@@ -21,10 +25,12 @@ class ProposalGeneratorQueueSenderStubImpl implements ProposalGeneratorQueueSend
         try {
             String json = objectMapper.writeValueAsString(agreement);
             logger.info("PROPOSAL GENERATION message content: " + json);
+            rabbitTemplate.convertAndSend(RabbitMQConfig.QUEUE_PROPOSAL_GENERATION, json);
         } catch (JsonProcessingException e) {
             logger.error("Error to convert agreement to JSON", e);
         } catch (AmqpException e) {
             logger.error("Error to sent proposal generation message", e);
         }
     }
+
 }
