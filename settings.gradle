@@ -6,6 +6,7 @@ include 'revinskaya_ekaterina:file_storage_app'
 include 'student_cekalins_andrejs:doc-generator-app'
 include 'student_cekalins_andrejs:insurance_calculator_v2'
 include 'student_cekalins_andrejs:black-list-app'
+include 'student_cekalins_andrejs:elk'
 include 'student_andrejs_sidenko:insurance_calculator_app'
 include 'student_andrejs_sidenko:doc_generator_app'
 include 'student_tarasova_oksana:insurance_calculator_app'
@@ -96,6 +97,5 @@ include 'teacher:step_42_elk_metrics:elk:metricbeat'
 include 'teacher:step_42_elk_metrics:elk:logstash'
 
 include 'teacher:step_utils'
-include 'student_cekalins_andrejs:black-list-app'
-findProject(':student_cekalins_andrejs:black-list-app')?.name = 'black-list-app'
+
 
