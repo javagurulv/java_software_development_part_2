@@ -1,14 +1,24 @@
 plugins {
 	id 'org.springframework.boot' version "2.7.5"
 	id 'com.palantir.docker' version '0.35.0'
-
+/*
+	id 'checkstyle'
+*/
 }
+
+/*
+checkstyle {
+	configFile = 'config/checkstyle/checkstyle.xml' as File
+}
+*/
 
 dependencies {
 
 	implementation('org.springframework.boot:spring-boot-starter-web:2.7.5')
 
 	implementation('org.springframework.boot:spring-boot-starter-amqp:2.7.5')
+
+	implementation('org.springframework.cloud:spring-cloud-starter-sleuth:3.1.11')
 
 	implementation('net.logstash.logback:logstash-logback-encoder:6.6')
 
