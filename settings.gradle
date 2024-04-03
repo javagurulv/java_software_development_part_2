@@ -101,4 +101,6 @@ include 'teacher:step_42_elk_metrics:elk:metricbeat'
 include 'teacher:step_42_elk_metrics:elk:logstash'
 
 include 'teacher:step_utils'
+include 'student_cekalins_andrejs:black-list-app'
+findProject(':student_cekalins_andrejs:black-list-app')?.name = 'black-list-app'
 

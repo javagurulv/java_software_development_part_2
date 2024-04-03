@@ -24,7 +24,7 @@ public class BlackListedPersonCheckRestController {
     @PostMapping(path = "/",
             consumes = "application/json",
             produces = "application/json")
-    public BlackListedPersonCheckResponse checkPerson(@RequestBody BlackListedPersonCheckRequest request) {
+    public BlackListedPersonCheckResponse calculatePremium(@RequestBody BlackListedPersonCheckRequest request) {
         Stopwatch stopwatch = Stopwatch.createStarted();
         BlackListedPersonCheckResponse response = processRequest(request);
         executionTimeLogger.logExecutionTime(stopwatch);

@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile({"h2", "mysql-local", "mysql-container"})
+@Profile({"h2", "mysql-local"})
 class ProposalGeneratorQueueSenderStubImpl implements ProposalGeneratorQueueSender {
 
     private static final Logger logger = LoggerFactory.getLogger(ProposalGeneratorQueueSenderStubImpl.class);
