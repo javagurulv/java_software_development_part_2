@@ -2,9 +2,11 @@
 
     <property name="LOGS" value="./logs" />
 
-    <property name="LOGS_V1" value="./logs/logsV1" />
+    <springProperty scope="context" name="application_name" source="spring.application.name"/>
 
-    <property name="LOGS_V2" value="./logs/logsV2" />
+    <appender name="jsonConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+    </appender>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -29,32 +31,15 @@
         </rollingPolicy>
     </appender>
 
-    <appender name="REQUEST_RESPONSE_FILE_APPENDER_V1"
+    <appender name="REQUEST_RESPONSE_FILE_APPENDER"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOGS_V1}/request-response-logger.log</file>
+        <file>${LOGS}/request-response-logger.log</file>
         <encoder>
             <pattern>%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOGS_V1}/archived/request-response-logger-%d{yyyy-MM-dd}.%i.log
-            </fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy
-                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>1MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-        </rollingPolicy>
-    </appender>
-
-    <appender name="REQUEST_RESPONSE_FILE_APPENDER_V2"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOGS_V2}/request-response-logger.log</file>
-        <encoder>
-            <pattern>%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n</pattern>
-        </encoder>
-
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOGS_V2}/archived/request-response-logger-%d{yyyy-MM-dd}.%i.log
+            <fileNamePattern>${LOGS}/archived/request-response-logger-%d{yyyy-MM-dd}.%i.log
             </fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -64,25 +49,18 @@
     </appender>
 
     <root level="INFO">
+<!--
         <appender-ref ref="CONSOLE" />
+-->
+        <appender-ref ref="jsonConsoleAppender" />
         <appender-ref ref="FILE_APPENDER" />
     </root>
 
     <logger name="lv.javaguru.travel.insurance.rest.v1.TravelCalculatePremiumRequestLoggerV1" level="INFO">
-        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER_V1" />
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
     </logger>
     <logger name="lv.javaguru.travel.insurance.rest.v1.TravelCalculatePremiumResponseLoggerV1" level="INFO">
-        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER_V1" />
-    </logger>
-    <logger name="lv.javaguru.travel.insurance.rest.v2.TravelCalculatePremiumRequestLoggerV2" level="INFO">
-        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER_V2" />
-    </logger>
-    <logger name="lv.javaguru.travel.insurance.rest.v2.TravelCalculatePremiumResponseLoggerV2" level="INFO">
-        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER_V2" />
-    </logger>
-    <logger name="lv.javaguru.travel.insurance.rest.TravelCalculateRequestExecutionTimeLogger" level="INFO">
-        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER_V1" />
-        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER_V2" />
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
     </logger>
 
 </configuration>
