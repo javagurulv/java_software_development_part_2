@@ -16,7 +16,7 @@ dependencies {
 	implementation('org.apache.httpcomponents:httpclient:4.0.2')
 
 	implementation('net.logstash.logback:logstash-logback-encoder:6.6')
-
+	implementation('org.springframework.cloud:spring-cloud-starter-sleuth:3.1.11')
 
 	compileOnly('org.projectlombok:lombok:1.18.30')
 	annotationProcessor('org.projectlombok:lombok:1.18.30')
