@@ -13,10 +13,10 @@ public class MessageSender {
     private RabbitTemplate rabbit;
 
     public void sendAgreement(AgreementDTO agreementDTO) {
-       rabbit.convertAndSend("agreement.exchanger", "agreement", agreementDTO);
+       rabbit.convertAndSend(RabbitConfig.QUEUE_AGREEMENT, agreementDTO);
     }
     public void sendAgreementXML(String filename) {
-       rabbit.convertAndSend("agreement.exchanger", "agreementXML", new File(filename));
+       rabbit.convertAndSend(RabbitConfig.QUEUE_AGREEMENT_XML, new File(filename));
     }
 
 }

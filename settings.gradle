@@ -4,6 +4,7 @@ include 'revinskaya_ekaterina:doc_generator_app'
 include 'revinskaya_ekaterina:black_list_app'
 include 'revinskaya_ekaterina:file_storage_app'
 include 'revinskaya_ekaterina:black_list_app'
+include 'revinskaya_ekaterina:elk'
 include 'revinskaya_ekaterina:elk:filebeat'
 
 include 'student_cekalins_andrejs:doc-generator-app'
