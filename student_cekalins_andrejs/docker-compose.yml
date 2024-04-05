@@ -35,6 +35,7 @@ services:
       collect_logs_with_filebeat: "true"
       decode_log_event_to_json_object: "true"
 
+
   insurance-calculator-app:
     networks: [ javaguru ]
     container_name: insurance-calculator-container
@@ -63,6 +64,7 @@ services:
       decode_log_event_to_json_object: "true"
 
   elasticsearch:
+    networks: [javaguru]
     image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
     ports:
       - "9200:9200"
@@ -72,17 +74,19 @@ services:
       - ./elk/elasticsearch/data:/usr/share/elasticsearch/data:rw              # Persistence data
 
   logstash:
+    networks: [javaguru]
     image: docker.elastic.co/logstash/logstash:7.2.0
     ports:
       - "25826:25826"
       - "5044:5044"
     volumes:
-      - ./elk/logstash/pipeline:/usr/share/logstash/pipeline:ro                # Pipeline configuration
+      - ./elk/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf              # Pipeline configuration
     restart: on-failure
     depends_on:
       - elasticsearch
 
   kibana:
+    networks: [javaguru]
     image: docker.elastic.co/kibana/kibana:7.2.0
     ports:
       - "5601:5601"
@@ -91,11 +95,22 @@ services:
       - elasticsearch
 
   filebeat:
+    networks: [javaguru]
     image: my-custom-filebeat:1.0.2
     volumes:
       - /var/lib/docker/containers:/var/lib/docker/containers:ro           # Docker logs
       - /var/run/docker.sock:/var/run/docker.sock:ro                       # Additional information about containers
       - ./elk/filebeat/data:/usr/share/filebeat/data:rw                        # Persistence data
+    user: root                                                             # Allow access to log files and docker.sock
+    restart: always
+    depends_on:
+      - logstash
+
+  metricbeat:
+    networks: [javaguru]
+    image: my-custom-metricbeat:1.0.2
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro                       # Additional information about containers
     user: root                                                             # Allow access to log files and docker.sock
     restart: always
     depends_on:
