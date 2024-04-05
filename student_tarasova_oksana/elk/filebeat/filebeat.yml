@@ -23,8 +23,3 @@ output.logstash:
   hosts: "logstash:5044"
 
 logging.metrics.enabled: false
-
-fields:
-  log_type: "log"
-
-fields_under_root: true

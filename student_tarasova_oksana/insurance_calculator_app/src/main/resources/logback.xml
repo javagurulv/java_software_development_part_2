@@ -2,11 +2,18 @@
 
     <property name="LOGS" value="./logs" />
 
+    <springProperty scope="context" name="application_name" source="spring.application.name"/>
+
+    <appender name="jsonConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+    </appender>
+
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
+
 
     <appender name="FILE_APPENDER"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -43,7 +50,10 @@
     </appender>
 
     <root level="INFO">
-        <appender-ref ref="CONSOLE" />
+        <!--
+                <appender-ref ref="CONSOLE" />
+        -->
+        <appender-ref ref="jsonConsoleAppender" />
         <appender-ref ref="FILE_APPENDER" />
     </root>
 
