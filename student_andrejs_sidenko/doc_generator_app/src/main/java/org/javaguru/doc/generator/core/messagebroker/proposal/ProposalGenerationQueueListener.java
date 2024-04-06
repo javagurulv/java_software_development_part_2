@@ -1,6 +1,8 @@
-package org.javaguru.doc.generator.core.messagebroker;
+package org.javaguru.doc.generator.core.messagebroker.proposal;
 
 import org.javaguru.doc.generator.core.api.dto.AgreementDTO;
+import org.javaguru.doc.generator.core.messagebroker.RabbitMQConfig;
+import org.javaguru.doc.generator.core.messagebroker.proposalack.ProposalGenerationAckQueueSender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
@@ -9,12 +11,6 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.Collections;
 
 @Component
 public class ProposalGenerationQueueListener {
@@ -27,7 +23,7 @@ public class ProposalGenerationQueueListener {
     @Autowired private JsonStringToAgreementDtoConverter agreementDtoConverter;
     @Autowired private ProposalGenerator proposalGenerator;
     @Autowired private RabbitTemplate rabbitTemplate;
-
+    @Autowired private ProposalGenerationAckQueueSender proposalGenerationAckQueueSender;
 
     @RabbitListener(queues = RabbitMQConfig.QUEUE_PROPOSAL_GENERATION)
     public void receiveMessage(final Message message) throws Exception {
@@ -60,7 +56,8 @@ public class ProposalGenerationQueueListener {
         String messageBody = new String(message.getBody());
         logger.info(messageBody);
         AgreementDTO agreementDTO = agreementDtoConverter.convert(messageBody);
-        proposalGenerator.generateProposalAndStoreToFile(agreementDTO);
+        String filePath = proposalGenerator.generateProposalAndStoreToFile(agreementDTO);
+        proposalGenerationAckQueueSender.send(agreementDTO, filePath);
     }
 
 

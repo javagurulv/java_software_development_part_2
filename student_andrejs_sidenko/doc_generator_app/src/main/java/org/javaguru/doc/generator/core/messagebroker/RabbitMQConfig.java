@@ -11,6 +11,7 @@ public class RabbitMQConfig {
 
     public static final String QUEUE_PROPOSAL_GENERATION = "q.proposal-generation";
     public static final String QUEUE_PROPOSAL_GENERATION_DLQ = "q.proposal-generation-dlq";
+    public static final String QUEUE_PROPOSAL_GENERATION_ACK = "q.proposal-generation-ack";
 
     @Bean
     public Queue proposalPdfGenerationQueue() {
@@ -20,6 +21,11 @@ public class RabbitMQConfig {
     @Bean
     public Queue proposalPdfGenerationDeadLetterQueue() {
         return new Queue(QUEUE_PROPOSAL_GENERATION_DLQ);
+    }
+
+    @Bean
+    public Queue proposalPdfGenerationAckQueue() {
+        return new Queue(QUEUE_PROPOSAL_GENERATION_ACK);
     }
 
 }
