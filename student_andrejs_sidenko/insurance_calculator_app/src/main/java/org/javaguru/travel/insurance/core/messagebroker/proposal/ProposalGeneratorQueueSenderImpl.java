@@ -1,8 +1,9 @@
-package org.javaguru.travel.insurance.core.messagebroker;
+package org.javaguru.travel.insurance.core.messagebroker.proposal;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
+import org.javaguru.travel.insurance.core.messagebroker.RabbitMQConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.AmqpException;
