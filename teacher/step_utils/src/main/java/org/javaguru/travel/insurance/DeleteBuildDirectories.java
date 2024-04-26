@@ -1,4 +1,4 @@
-package lv.javaguru.travel.insurance;
+package org.javaguru.travel.insurance;
 
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 

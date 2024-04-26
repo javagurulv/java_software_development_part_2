@@ -1,4 +1,4 @@
-package lv.javaguru.travel.insurance;
+package org.javaguru.travel.insurance;
 
 import java.io.IOException;
 import java.nio.file.Files;
