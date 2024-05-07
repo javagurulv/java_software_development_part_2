@@ -5,7 +5,7 @@
 Ваша задача: добавьте в проект Gradle плагин id 'checkstyle'.
 
 plugins {
-	id 'org.springframework.boot' version "2.7.5"
+	id 'org.springframework.boot' version "3.2.5"
 	id 'com.palantir.docker' version '0.35.0'
 	id 'checkstyle'
 }

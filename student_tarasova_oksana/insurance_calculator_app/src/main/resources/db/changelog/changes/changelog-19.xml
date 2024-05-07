@@ -6,6 +6,12 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
 
     <changeSet author="javaguru" id="46">
+        <addUniqueConstraint columnNames="uuid"
+                             constraintName="unique_uuid"
+                             tableName="agreements"/>
+    </changeSet>
+
+    <changeSet author="javaguru" id="47">
         <createTable tableName="agreements_xml_export">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -19,7 +25,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet author="javaguru" id="47">
+    <changeSet author="javaguru" id="48">
         <addForeignKeyConstraint baseTableName="agreements_xml_export"
                                  baseColumnNames="agreement_uuid"
                                  constraintName="fk_agreements_xml_export_agreement_uuid"

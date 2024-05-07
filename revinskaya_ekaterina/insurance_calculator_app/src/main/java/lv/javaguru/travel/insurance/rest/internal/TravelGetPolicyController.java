@@ -18,7 +18,7 @@ class TravelGetPolicyController {
 
     @GetMapping(path = "/",
             produces = "application/json")
-    public TravelGetPolicyResponse getPolicy(@PathVariable String uuid) {
+    public TravelGetPolicyResponse getPolicy(@PathVariable("uuid") String uuid) {
         TravelGetPolicyCoreCommand command = new TravelGetPolicyCoreCommand(uuid);
         TravelGetPolicyCoreResult result = getPolicyService.getPolicy(command);
         return dtoInternalConverter.convert(result);

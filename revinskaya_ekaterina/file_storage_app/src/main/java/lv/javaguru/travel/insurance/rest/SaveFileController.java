@@ -27,7 +27,7 @@ public class SaveFileController {
             consumes = { MediaType.MULTIPART_FORM_DATA_VALUE },
             produces = "application/json"
             )
-    SaveFileResponse saveFile(@RequestParam("file") MultipartFile file, @PathVariable String uuid) throws IOException {
+    SaveFileResponse saveFile(@RequestParam("file") MultipartFile file, @PathVariable("uuid") String uuid) throws IOException {
         File receiveFile = new File(proposalsDirectoryPath + "/agreement-" + uuid + ".pdf");
         file.transferTo(receiveFile);
         return new SaveFileResponse("bucket@agreement-"+uuid+"-pdf_file_storage", uuid);

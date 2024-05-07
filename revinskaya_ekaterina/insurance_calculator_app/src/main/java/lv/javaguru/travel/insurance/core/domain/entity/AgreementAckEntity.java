@@ -4,7 +4,7 @@ package lv.javaguru.travel.insurance.core.domain.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "agreements_ack")

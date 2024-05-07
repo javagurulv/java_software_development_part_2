@@ -1,6 +1,6 @@
 package org.javaguru.travel.insurance.core.domain.entities;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import lombok.AllArgsConstructor;
