@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import jakarta.persistence.*;
+import org.hibernate.type.YesNoConverter;
 
 @Entity
 @Table(name = "agreement_proposals")
@@ -24,6 +25,7 @@ public class AgreementProposalAckEntity {
     private String agreementUuid;
 
     @Column(name = "already_generated", nullable = false)
+    @Convert(converter = YesNoConverter.class)
     private Boolean alreadyGenerated;
 
     @Column(name = "proposal_file_path", nullable = false)

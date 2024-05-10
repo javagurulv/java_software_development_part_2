@@ -47,7 +47,7 @@ Docker просто запускает контейнеры последоват
 Добавьте в Dockerfile следующие строки:
 
 # Install bash - bash нужен для выполнения wait-for-it.sh
-RUN apk add --no-cache bash
+# RUN apk add --no-cache bash
 
 COPY wait-for-it.sh wait-for-it.sh
 RUN chmod +x /wait-for-it.sh

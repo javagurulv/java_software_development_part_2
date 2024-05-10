@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import jakarta.persistence.*;
+import org.hibernate.type.YesNoConverter;
 
 @Entity
 @Table(name = "agreements_xml_export")
@@ -24,6 +25,7 @@ public class AgreementXmlExportEntity {
     private String agreementUuid;
 
     @Column(name = "already_exported", nullable = false)
+    @Convert(converter = YesNoConverter.class)
     private Boolean alreadyExported;
 
 }

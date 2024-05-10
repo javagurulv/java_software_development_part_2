@@ -1,4 +1,4 @@
-FROM openjdk:18-jdk-alpine
+FROM eclipse-temurin:21
 
 COPY file-storage-1.0.0.jar file-storage.jar
 

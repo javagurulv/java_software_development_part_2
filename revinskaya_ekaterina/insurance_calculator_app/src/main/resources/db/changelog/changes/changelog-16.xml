@@ -11,7 +11,7 @@
     </changeSet>
     <changeSet author="katierevinska" id="add_column">
         <addColumn tableName="agreements">
-            <column name="already_exported" type="boolean" defaultValue="false"/>
+            <column name="already_exported" type="CHAR(1)"/>
         </addColumn>
     </changeSet>
 
@@ -23,7 +23,7 @@
             <column name="agreement_uuid" type="VARCHAR(36)">
                 <constraints nullable="false"/>
             </column>
-            <column name="already_exported" type="boolean">
+            <column name="already_exported" type="CHAR(1)">
                 <constraints nullable="false"/>
             </column>
             <column name="file_path" type="VARCHAR(200)">

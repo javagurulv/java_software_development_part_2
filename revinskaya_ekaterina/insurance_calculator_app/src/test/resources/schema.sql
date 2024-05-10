@@ -75,7 +75,7 @@ date_from timestamp not null,
 date_to timestamp not null,
 country varchar(200) not null,
 premium decimal(10,2) not null,
-already_exported BOOLEAN DEFAULT false,
+already_exported CHAR(1) DEFAULT false,
 primary key(id)
 );
 
@@ -169,7 +169,7 @@ create table if not exists agreements_ack
 (
   id bigint not null auto_increment,
   agreement_uuid varchar(36) not null,
-  already_exported BOOLEAN not null,
+  already_exported CHAR(1) not null,
   file_path varchar(200) not null,
   primary key(id)
 );

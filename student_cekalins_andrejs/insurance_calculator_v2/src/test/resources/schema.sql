@@ -167,7 +167,7 @@ ADD CONSTRAINT unique_uuid UNIQUE (uuid);
 CREATE TABLE agreements_xml_export (
   id BIGINT NOT NULL AUTO_INCREMENT,
   agreement_uuid VARCHAR(255) NOT NULL,
-  already_exported BOOL NOT NULL,
+  already_exported CHAR(1) NOT NULL,
   PRIMARY KEY (id),
   foreign key (agreement_uuid) references agreements(uuid)
 );
@@ -175,7 +175,7 @@ CREATE TABLE agreements_xml_export (
 CREATE TABLE agreement_proposals (
   id BIGINT NOT NULL AUTO_INCREMENT,
   agreement_uuid VARCHAR(255) NOT NULL,
-  already_generated BOOL NOT NULL,
+  already_generated CHAR(1) NOT NULL,
   proposal_file_path VARCHAR(255) NOT NULL,
   PRIMARY KEY (id),
   foreign key (agreement_uuid) references agreements(uuid)

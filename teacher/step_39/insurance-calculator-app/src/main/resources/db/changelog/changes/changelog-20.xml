@@ -13,7 +13,7 @@
             <column name="agreement_uuid" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="already_generated" type="BOOL">
+            <column name="already_generated" type="CHAR(1)">
                 <constraints nullable="false"/>
             </column>
             <column name="proposal_file_path" type="VARCHAR(255)">

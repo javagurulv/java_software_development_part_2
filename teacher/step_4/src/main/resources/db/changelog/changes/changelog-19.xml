@@ -19,7 +19,7 @@
             <column name="agreement_uuid" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="already_exported" type="BOOL">
+            <column name="already_exported" type="CHAR(1)">
                 <constraints nullable="false"/>
             </column>
         </createTable>

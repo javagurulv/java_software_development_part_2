@@ -1,4 +1,4 @@
-FROM openjdk:18-jdk-alpine
+FROM eclipse-temurin:21
 
 COPY doc-generator-1.0.2.jar doc-generator.jar
 

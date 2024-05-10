@@ -57,8 +57,12 @@ clean.doFirst {
 	println "${projectDir}/logs/"
 }
 
+dockerPrepare {
+	dependsOn(tasks["bootJar"])
+}
+
 docker {
-	dependsOn bootJar
+	dependsOn(tasks["bootJar"])
 	name "doc-generator:1.0.2"
 	files 'build/libs/doc-generator-1.0.2.jar'
 	files 'wait-for-it.sh'

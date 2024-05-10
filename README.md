@@ -24,7 +24,7 @@
     * [ [Скачать](https://www.jetbrains.com/idea/download/) ]
 
 
-* **[JDK: Amazon Corretto version 18.0.2](https://adoptium.net/)** - Комплект разработчика приложений (**JDK** - **J**ava **D**evelopment **K**it) на **Java** необходимый для компиляции и запуска программ
+* **[JDK: Amazon Corretto version 21.0.3](https://adoptium.net/)** - Комплект разработчика приложений (**JDK** - **J**ava **D**evelopment **K**it) на **Java** необходимый для компиляции и запуска программ
     * Рекомендуется установить используя **IDE**
     * [ [Скачать](https://adoptium.net/) ]
 

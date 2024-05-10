@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import jakarta.persistence.*;
+import org.hibernate.type.YesNoConverter;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -29,5 +31,6 @@ public class AgreementEntity {
     @Column(name = "premium", nullable = false)
     private BigDecimal premium;
     @Column(name = "already_exported")
+    @Convert(converter = YesNoConverter.class)
     private Boolean alreadyExported;
 }
