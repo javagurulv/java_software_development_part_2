@@ -14,8 +14,7 @@ class ProposalGenerationAckService {
 
     private static final Logger logger = LoggerFactory.getLogger(ProposalGenerationAckService.class);
 
-    @Autowired
-    private AgreementProposalAckEntityRepository proposalAckEntityRepository;
+    @Autowired private AgreementProposalAckEntityRepository proposalAckEntityRepository;
 
     public void process(ProposalGenerationAck proposalGenerationAck) {
         logger.info("Start to process proposal ack: " + proposalGenerationAck.getAgreementUuid());
@@ -29,4 +28,5 @@ class ProposalGenerationAckService {
 
         logger.info("Finish to process proposal ack: " + proposalGenerationAck.getAgreementUuid());
     }
+
 }

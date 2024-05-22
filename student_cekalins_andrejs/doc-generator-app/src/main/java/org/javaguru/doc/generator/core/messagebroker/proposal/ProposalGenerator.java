@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-
 @Component
 class ProposalGenerator {
 
@@ -26,7 +25,8 @@ class ProposalGenerator {
     private final static PDFont bolt = PDType1Font.HELVETICA_BOLD;
     private final static PDFont plane = PDType1Font.HELVETICA;
 
-    public void generateProposalAndStoreToFile(AgreementDTO agreementDTO) throws IOException {
+
+    public String generateProposalAndStoreToFile(AgreementDTO agreementDTO) throws IOException {
         logger.info("Start to generate PDF for proposal: " + agreementDTO.getUuid());
 
         try {
@@ -65,13 +65,15 @@ class ProposalGenerator {
 
             addHeaderAndWrapperText("Agreement premium: ", agreementDTO.getAgreementPremium().toString(), contentStream, offsetContext);
             contentStream.close();
-            document.save(proposalsDirectoryPath + "/" + buildFileName(agreementDTO));
+            String filePath = proposalsDirectoryPath + "/" + buildFileName(agreementDTO);
+            document.save(filePath);
             document.close();
+            logger.info("Finish to generate PDF for proposal: " + agreementDTO.getUuid());
+            return filePath;
         } catch (IOException e) {
             logger.error("Proposal generation error!", e);
             throw new RuntimeException(e);
         }
-        logger.info("Finish to generate PDF for proposal: " + agreementDTO.getUuid());
     }
 
     private String buildFileName(AgreementDTO agreementDTO) {
@@ -181,4 +183,5 @@ class ProposalGenerator {
             Y = y;
         }
     }
+
 }

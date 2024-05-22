@@ -5,7 +5,7 @@ networks:
 
 services:
   message-broker:
-    networks: [ javaguru ]
+    networks: [javaguru]
     container_name: rabbitmq-container
     image: rabbitmq:3-management
     ports:
@@ -13,7 +13,7 @@ services:
       - "15672:15672"
 
   db:
-    networks: [ javaguru ]
+    networks: [javaguru]
     container_name: mysql-container
     image: mysql:8.0
     environment:
@@ -24,7 +24,7 @@ services:
       - "3000:3306"
 
   black-list-app:
-    networks: [ javaguru ]
+    networks: [javaguru]
     container_name: black-list-container
     image: black-list:1.0.2
     ports:
@@ -37,20 +37,21 @@ services:
 
 
   insurance-calculator-app:
-    networks: [ javaguru ]
-    container_name: insurance-calculator-container
+    networks: [javaguru]
+    container_name: insurance-calc-container
     image: insurance-calculator:1.0.2
     ports:
       - "8080:8080"
     depends_on:
-      - db
       - message-broker
+      - db
     labels:
       collect_logs_with_filebeat: "true"
       decode_log_event_to_json_object: "true"
 
+
   doc-generator-app:
-    networks: [ javaguru ]
+    networks: [javaguru]
     container_name: doc-generator-container
     image: doc-generator:1.0.2
     volumes:
@@ -62,6 +63,8 @@ services:
     labels:
       collect_logs_with_filebeat: "true"
       decode_log_event_to_json_object: "true"
+
+
 
   elasticsearch:
     networks: [javaguru]
@@ -75,12 +78,12 @@ services:
 
   logstash:
     networks: [javaguru]
-    image: docker.elastic.co/logstash/logstash:7.2.0
+    image: my-custom-logstash:1.0.2
     ports:
       - "25826:25826"
       - "5044:5044"
     volumes:
-      - ./elk/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf              # Pipeline configuration
+      - ./elk/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf                # Pipeline configuration
     restart: on-failure
     depends_on:
       - elasticsearch

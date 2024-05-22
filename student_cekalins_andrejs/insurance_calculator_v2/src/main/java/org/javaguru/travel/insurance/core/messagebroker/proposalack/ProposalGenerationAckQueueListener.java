@@ -14,13 +14,13 @@ import org.springframework.stereotype.Component;
 @Component
 @Profile("mysql-container")
 public class ProposalGenerationAckQueueListener {
+
     private static final Logger logger = LoggerFactory.getLogger(ProposalGenerationAckQueueListener.class);
 
     @Value("${rabbitmq.total.retry.count:3}")
     private Integer totalRetryCount;
 
-    @Autowired
-    private JsonStringToProposalGenerationAckConverter proposalGenerationAckConverter;
+    @Autowired private JsonStringToProposalGenerationAckConverter proposalGenerationAckConverter;
     @Autowired private ProposalGenerationAckService proposalGenerationAckService;
     @Autowired private RabbitTemplate rabbitTemplate;
 
@@ -59,4 +59,5 @@ public class ProposalGenerationAckQueueListener {
         ProposalGenerationAck proposalGenerationAck = proposalGenerationAckConverter.convert(messageBody);
         proposalGenerationAckService.process(proposalGenerationAck);
     }
+
 }

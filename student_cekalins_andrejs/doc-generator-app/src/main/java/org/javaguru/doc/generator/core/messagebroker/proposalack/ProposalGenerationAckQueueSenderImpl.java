@@ -13,12 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ProposalGenerationAckQueueSenderImpl implements ProposalGenerationAckQueueSender {
+class ProposalGenerationAckQueueSenderImpl implements ProposalGenerationAckQueueSender {
 
     private static final Logger logger = LoggerFactory.getLogger(ProposalGenerationAckQueueSenderImpl.class);
 
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+    @Autowired private RabbitTemplate rabbitTemplate;
 
     @Override
     public void send(AgreementDTO agreement, String proposalFilePath) {
@@ -37,4 +36,5 @@ public class ProposalGenerationAckQueueSenderImpl implements ProposalGenerationA
             logger.error("Error to sent proposal generation ack message", e);
         }
     }
+
 }

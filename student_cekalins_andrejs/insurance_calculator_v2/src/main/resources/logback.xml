@@ -49,17 +49,17 @@
     </appender>
 
     <root level="INFO">
-        <!--
-                <appender-ref ref="CONSOLE" />
-        -->
+<!--
+        <appender-ref ref="CONSOLE" />
+-->
         <appender-ref ref="jsonConsoleAppender" />
         <appender-ref ref="FILE_APPENDER" />
     </root>
 
-    <logger name="lv.javaguru.travel.insurance.rest.v1.TravelCalculatePremiumRequestLoggerV1" level="INFO">
+    <logger name="org.javaguru.travel.insurance.rest.v1.TravelCalculatePremiumRequestLoggerV1" level="INFO">
         <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
     </logger>
-    <logger name="lv.javaguru.travel.insurance.rest.v1.TravelCalculatePremiumResponseLoggerV1" level="INFO">
+    <logger name="org.javaguru.travel.insurance.rest.v1.TravelCalculatePremiumResponseLoggerV1" level="INFO">
         <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER" />
     </logger>
 

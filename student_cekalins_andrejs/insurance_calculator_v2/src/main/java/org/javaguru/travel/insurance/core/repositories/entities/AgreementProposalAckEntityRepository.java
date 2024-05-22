@@ -4,4 +4,6 @@ import org.javaguru.travel.insurance.core.domain.entities.AgreementProposalAckEn
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AgreementProposalAckEntityRepository extends JpaRepository<AgreementProposalAckEntity, Long> {
+
+
 }

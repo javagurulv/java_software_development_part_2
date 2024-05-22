@@ -12,4 +12,5 @@ class JsonStringToAgreementDtoConverter {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(json, AgreementDTO.class);
     }
+
 }
