@@ -1,0 +1,123 @@
+openapi: "3.0.0"
+
+info:
+  version: 1.0.2
+  title: black-list-api
+  description: OpenAPI for black listed clients
+
+paths:
+  /blackListedPersons:
+    get:
+      description: Returns a list of all black listed persons
+      operationId: listBlackListedPersons
+      tags:
+        - blackListedPersons
+      parameters:
+        - name: limit
+          in: query
+          description: Limits the number of items on a page
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Specifies the page number of the black listed persons to be displayed
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A JSON array with black listed persons
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    person_first_name:
+                      type: string
+                    person_last_name:
+                      type: string
+                    person_code:
+                      type: string
+
+'400':
+  description: Invalid request
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string
+
+
+
+    post:
+      description: Create new black listed person
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                person_first_name:
+                  type: string
+                person_last_name:
+                  type: string
+                person_code:
+                  type: string
+
+    responses:
+      '200':
+        description: Successfully created a new black listed person
+
+      '400':
+        description: Invalid request
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+
+
+
+  /blackListedPersons/{blackListedPersonId}:
+    get:
+      description: Returns black listed person by ID.
+      operationId: showBlackListedPersonById
+parameters:
+  - name: blackListedPersonId
+    in: path
+    required: true
+    schema:
+      type: string
+
+    responses:
+      '200':
+        description: A JSON array with black listed persons
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  person_first_name:
+                    type: string
+                  person_last_name:
+                    type: string
+                  person_code:
+                    type: string
+
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
