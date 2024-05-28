@@ -1,2 +1,2 @@
-Ваша задача: написать тесты для REST API в BlackList.
+Ваша задача: создать в BlackList уровень REST API.
 REST API url: /blacklist/person/check  HTTP POST.

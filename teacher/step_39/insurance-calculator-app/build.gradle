@@ -66,12 +66,8 @@ clean.doFirst {
 	println "${projectDir}/logs/"
 }
 
-dockerPrepare {
-	dependsOn(tasks["bootJar"])
-}
-
 docker {
-	dependsOn(tasks["bootJar"])
+	dependsOn bootJar
 	name "insurance-calculator:1.0.2"
 	files 'build/libs/insurance-calculator-1.0.2.jar'
 	files 'wait-for-it.sh'

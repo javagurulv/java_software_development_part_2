@@ -171,13 +171,3 @@ CREATE TABLE agreements_xml_export (
   PRIMARY KEY (id),
   foreign key (agreement_uuid) references agreements(uuid)
 );
-
-
-CREATE TABLE agreement_proposals (
-  id BIGINT NOT NULL AUTO_INCREMENT,
-  agreement_uuid VARCHAR(255) NOT NULL,
-  already_generated CHAR(1) NOT NULL,
-  proposal_file_path VARCHAR(255) NOT NULL,
-  PRIMARY KEY (id),
-  foreign key (agreement_uuid) references agreements(uuid)
-);
