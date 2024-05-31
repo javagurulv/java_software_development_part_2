@@ -3,13 +3,17 @@ openapi: "3.0.0"
 info:
   version: 1.0.2
   title: black-list-api
-  description: OpenAPI for black listed clients
+  description: OpenAPI for black listed persons
+
+server:
+  -url: http://lockalhost:8080/api
+  description: Local server
 
 paths:
   /blackListedPersons:
     get:
-      description: Returns a list of all black listed persons
-      operationId: listBlackListedPersons
+      summary: Returns list of all black listed persons
+      operationId: listWithBlackListedPersons
       tags:
         - blackListedPersons
       parameters:
@@ -25,99 +29,71 @@ paths:
             type: integer
       responses:
         '200':
-          description: A JSON array with black listed persons
+          description: Successfully returned a list with black listed persons
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    person_first_name:
-                      type: string
-                    person_last_name:
-                      type: string
-                    person_code:
-                      type: string
+                $ref: '#/components/schemas/BlackListedPersonDTO'
 
-'400':
-  description: Invalid request
-  content:
-    application/json:
-      schema:
-        type: object
-        properties:
-          message:
-            type: string
-
-
-
+  /blackListedPerson:
     post:
-      description: Create new black listed person
+      summary: Save BlackListedPerson
+      operationId: saveBlackListedPerson
       requestBody:
-        required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                person_first_name:
-                  type: string
-                person_last_name:
-                  type: string
-                person_code:
-                  type: string
-
+              $ref: '#/components/schemas/BlackListedPersonDTO'
     responses:
       '200':
-        description: Successfully created a new black listed person
-
-      '400':
-        description: Invalid request
+        description: Black listed person created successfully
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                message:
-                  type: string
-
+              $ref: '#/components/schemas/BlackListedPersonDTO'
 
 
   /blackListedPersons/{blackListedPersonId}:
     get:
-      description: Returns black listed person by ID.
-      operationId: showBlackListedPersonById
+      summary: Returns black listed person by ID.
+      operationId: getBlackListedPersonById
 parameters:
-  - name: blackListedPersonId
+  - name: id
     in: path
+    description: Unique ID of the person
     required: true
     schema:
       type: string
-
+      format: uuid
     responses:
       '200':
-        description: A JSON array with black listed persons
+        description: Done
         content:
           application/json:
             schema:
-              type: array
-              items:
-                type: object
-                properties:
-                  person_first_name:
-                    type: string
-                  person_last_name:
-                    type: string
-                  person_code:
-                    type: string
+              $ref: '#/components/schemas/BlackListedPersonDTO'
 
-        '400':
-          description: Invalid request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
+components:
+  schemas:
+    BlackListedPersonDTO:
+      type: object
+      description: Blacklisted person Data
+      properties:
+        id:
+          type: string
+          format: uuid
+        personFirstName:
+          type: string
+        personLastName:
+          type: string
+        personCode:
+          type: string
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+

@@ -6,6 +6,7 @@ plugins {
 */
 }
 
+
 /*
 checkstyle {
 	configFile = 'config/checkstyle/checkstyle.xml' as File
@@ -30,4 +31,20 @@ dependencies {
     test {
         useJUnitPlatform()
     }
+
+    jar {
+        enabled = false
+    }
+
+    bootJar {
+        enabled = true
+        archiveBaseName = 'black-list-api'
+        archiveVersion = '1.0.2'
+    }
+
+    clean.doFirst {
+        delete "${projectDir}/logs/"
+        println "${projectDir}/logs/"
+    }
+
 }
