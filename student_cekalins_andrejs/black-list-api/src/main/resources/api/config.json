@@ -1,0 +1,20 @@
+{
+  "library": "spring-boot",
+  "dateLibrary": "java21",
+  "hideGenerationTimestamp": true,
+  "modelPackage": "com.docs.blacklist.api.model",
+  "apiPackage": "com.docs.blacklist.api",
+  "invokerPackage": "com.docs.blacklist.api",
+  "serializableModel": true,
+  "openApiNullable": false,
+  "useTags": true,
+  "useGzipFeature": true,
+  "hateoas": true,
+  "unhandledException": true,
+  "useSpringBoot3": true,
+  "useSwaggerUI": true,
+  "importMappings": {
+    "ResourceSupport": "org.springframework.hateoas.RepresentationModel",
+    "Link": "org.springframework.hateoas.Link"
+  }
+}
