@@ -4,14 +4,6 @@ networks:
   javaguru:
 
 services:
-  message-broker:
-    networks: [javaguru]
-    container_name: rabbitmq-container
-    image: rabbitmq:3-management
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-
   db:
     networks: [javaguru]
     container_name: mysql-container
@@ -29,5 +21,4 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - message-broker
       - db

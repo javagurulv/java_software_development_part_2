@@ -8,22 +8,10 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfig {
 
     public static final String QUEUE_PROPOSAL_GENERATION = "q.proposal-generation";
-    public static final String QUEUE_PROPOSAL_GENERATION_ACK = "q.proposal-generation-ack";
-    public static final String QUEUE_PROPOSAL_GENERATION_ACK_DLQ = "q.proposal-generation-ack-dlq";
 
     @Bean
-    public Queue createProposalGenerationQueue() {
+    public Queue createProposalPdfGenerationQueue() {
         return new Queue(QUEUE_PROPOSAL_GENERATION);
-    }
-
-    @Bean
-    public Queue createProposalGenerationAckQueue() {
-        return new Queue(QUEUE_PROPOSAL_GENERATION_ACK);
-    }
-
-    @Bean
-    public Queue createProposalGenerationAckDlq() {
-        return new Queue(QUEUE_PROPOSAL_GENERATION_ACK_DLQ);
     }
 
 }

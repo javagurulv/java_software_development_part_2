@@ -1,37 +1,6 @@
-Для полноценного развертывания нашего приложения
-нам понадобится запустить сервер баз данных MySQl
-в Docker контейнере.
-
-Ваша задача: освоить следующие команды Docker для работы с образами:
-
-Просмотр всех доступных локально образов:
-
-docker images
-
-
-Скачивание готового образа из Docker Hub, который является
-официальным реестром образов Docker. Docker Hub предоставляет
-широкий спектр официальных образов, созданных разработчиками
-программного обеспечения и сообществом, а также позволяет
-пользователям загружать свои собственные образы для общего доступа.
-
-docker pull mysql:8.0
-
-
-Удаление локального образа по названию и тегу:
-
-docker rmi mysql:8.0
-
-
-Remove Dangling Images: Dangling images are layers that
-have no relationship to any tagged images. They often
-consume disk space and can be safely removed. To remove
-all dangling images, you can use:
-
-docker image prune
-
-
-Remove All Unused Images: To remove all images that
-are not used by any container (not just dangling ones), you can use:
-
-docker image prune -a
+Ваша задача: запустите приложение в Docker контейнере с маппингом портов,
+откройте приложение Postman и выполните несколько REST запросов к
+приложению. Убедитесь что вы получаете ответы, посмотрите что происходит
+в логах приложения. Какая функциональность перестала правильно
+работать при запуске приложения в Docker контейнере? Попробуйте
+разобраться почему?

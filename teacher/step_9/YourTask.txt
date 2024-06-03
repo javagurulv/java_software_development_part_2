@@ -1,50 +1,40 @@
-Запускаем MySQL Docker контейнер!
+Ментор хочет чтобы вы внедрили в проект статический анализ кода.
 
-Ваша задача: запустить Docker контейнер с MySQL сервером.
+Узнайте что это такое, для чего он нужен и как работает.
 
-При старте контейнера укажите пароль администратора,
-сделайте прокидку портов так, чтобы порт 3000 вашей OS
-мапился на порт 3306 MySQL контейнера,
-дайте название контейнеру mysql-container.
+Ваша задача: добавьте в проект Gradle плагин id 'checkstyle'.
 
-Сделайте так, чтобы при старте MySQL контейнера
-в нем создавалась пустая база данных под названием
-insurance-calc-db.
+plugins {
+	id 'org.springframework.boot' version "3.2.5"
+	id 'com.palantir.docker' version '0.35.0'
+	id 'checkstyle'
+}
 
-Все это можно сделать командой:
-docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=javaguru -e MYSQL_DATABASE=insurance-calc-db -p 3000:3306 -d mysql:8.0
+Так как конфигурация статического код анализатора будет лежать
+у вас в модуле, добавьте следующие строки в ваш gradle.build:
 
-docker run [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG...]
+checkstyle {
+	configFile = 'config/checkstyle/checkstyle.xml' as File
+}
 
-OPTIONS: A set of options to configure the container.
-         You can see all available options by running docker run --help.
-IMAGE[:TAG]: The name of the image you want to run.
-             The TAG is optional; if you don't specify it,
-             Docker uses the latest tag by default.
-COMMAND: An optional command to run inside the container.
-ARG...: Optional arguments that are passed to the command.
+Скопируйте папку config из этого шага себе в модуль.
 
+Запустите билд вашего модуля и убедитесь, что статический код
+анализ работает. В первый раз он выдаст очень много ошибок.
+Не волнуйтесь, попробуйте исправить самые очевидные из них.
 
-Подключитесь к MySQL Docker контейнеру через MySQL Workbench
-и убедитесь, что на сервере создалась пустая база данный.
+Если это необходимо (чтобы ошибки статического код анализа)
+не фейлили билд укажите для них свойство severity -> warning:
 
-Выполнив команду docker ps можно посмотреть список всех
-запущенных в данный момент Docker контейнеров.
+        <module name="FinalClass">
+            <property name="severity" value="warning"/>
+        </module>
 
-List All Containers (Running and Stopped):
-If you want to see all containers on your system,
-regardless of their state (running, stopped, etc.),
-you can use the -a or --all option:
+или
 
-docker ps -a
+    <!-- Глобальное свойство - делает все проверки = warning!
+    <property name="severity" value="warning"/>
+    -->
 
 
-Остановить или убить контейнер можно командами:
-
-docker stop container-name
-docker kill container-name
-
-
-Удалить контейнер можно командой:
-
-docker rm mysql-container
+Добейтесь успешного прохождения код анализатора и зеленого билда!

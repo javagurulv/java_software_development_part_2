@@ -1,40 +1,37 @@
-Учимся работать с сетью!
+Для полноценного развертывания нашего приложения
+нам понадобится запустить сервер баз данных MySQl
+в Docker контейнере.
 
-Сеть (network) это важный элемент ИТ экосистемы.
-Она обеспечивает возможность взаимодействия между приложениями.
+Ваша задача: освоить следующие команды Docker для работы с образами:
 
-Посмотреть все доступные на локальном компьютере сети
-можно выполнив команду:
+Просмотр всех доступных локально образов:
 
-docker network ls
-
-NETWORK ID     NAME       DRIVER    SCOPE
-22bc1d4900a3   bridge     bridge    local
-ac887d218956   host       host      local
-ba02630dcb1b   javaguru   bridge    local
-806a6de979d5   none       null      local
+docker images
 
 
-Для создания виртуальной сети используется команда:
+Скачивание готового образа из Docker Hub, который является
+официальным реестром образов Docker. Docker Hub предоставляет
+широкий спектр официальных образов, созданных разработчиками
+программного обеспечения и сообществом, а также позволяет
+пользователям загружать свои собственные образы для общего доступа.
 
-docker network create javaguru-network
-
-
-Для удаления виртуальной сети используется команда:
-
-docker network rm javaguru-network
-
-
-Verify the Container is Running and Connected to the Network:
+docker pull mysql:8.0
 
 
-docker network inspect javaguru-network
+Удаление локального образа по названию и тегу:
+
+docker rmi mysql:8.0
 
 
-This command provides detailed information about the network,
-including which containers are connected to it.
+Remove Dangling Images: Dangling images are layers that
+have no relationship to any tagged images. They often
+consume disk space and can be safely removed. To remove
+all dangling images, you can use:
+
+docker image prune
 
 
-Ваша задача: создайте виртуальную сеть javaguru-network.
-В следующих заданиях мы будем использовать эту сеть для
-запуска контейнеров.
+Remove All Unused Images: To remove all images that
+are not used by any container (not just dangling ones), you can use:
+
+docker image prune -a

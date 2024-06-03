@@ -1,13 +1,32 @@
-Spring Default Profile!
+Запускаем два контейнера в одной сети!
 
-The spring.profiles.default property in Spring applications
-is used to specify the default profile(s) that should be active
-if no other profiles are activated through environment variables,
-JVM arguments, or other means. This property can be particularly
-useful for setting a base configuration that your application
-should run with under normal circumstances, while still allowing
-you to override it with specific profiles for different environments
-(e.g., development, test, production).
+В прошлом задании вы создали виртуальную сеть.
+Теперь пришла пора запустить в этой сети два
+контейнера: MySQL сервер и Insurance Calculator.
 
-Ваша задача: установите дефолтный профайл с H2 базой
-как для приложения, так и для тестов.
+При работе с виртуальной сетью имена хостов = именам контейнеров.
+То есть обратиться из одного контейнера в другой в рамках оной
+виртуальной сети можно указав вместо IP адреса название контейнера.
+Оба контейнера должны быть запущены в одной виртуальной сети.
+
+Ваша глобальная задача для этого шага: поднять два контейнера
+в одной виртуальной сети и подключить приложение к базе данных
+развернутой в MySQL контейнере.
+
+Шаг 1: Переключите конфиг приложения на MySQL сервер.
+Используйте имя MqSQL контейнера вместо хоста.
+
+Шаг 2: Проверьте создана ли виртуальная сеть (docker network ls),
+если не создана то создайте.
+
+Шаг 3: Запустите контейнер с MySQL сервером и базой данных
+в виртуальной сети.
+
+Шаг 4: Соберите контейнер с приложением и активной конфигурацией
+для подключения к MySQL серверу и базе внутри контейнера.
+
+Шаг 5: Запустите контейнер с приложением.
+
+Шаг 6: Подключитесь к базе данных используя MySQL Workbench
+и убедитесь, что в базе данных приложение при стартапе создало
+все таблицы (это должен сделать Liquibase).

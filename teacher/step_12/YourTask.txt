@@ -1,34 +1,40 @@
-Учимся использовать Spring Profiles!
+Учимся работать с сетью!
 
-В прошлом задании мы запустили приложение в контейнере
-и подключили его к MySQL серверу запущенному в другом контейнере.
+Сеть (network) это важный элемент ИТ экосистемы.
+Она обеспечивает возможность взаимодействия между приложениями.
 
-Для этого нам пришлось поменять параметры конфигурации datasource
-в application.properties файле. Теперь они переключены на использование
-MySQL базы данных.
+Посмотреть все доступные на локальном компьютере сети
+можно выполнив команду:
 
-А что если мы захотим запустить приложение локально с H2
-базой данных или переключить приложение на использование
-локально установленного MySQL сервера? Нам опять придется
-менять application.properties конфигурацию?
+docker network ls
 
-Как то это выглядит не очень! А есть ли другой способ?
+NETWORK ID     NAME       DRIVER    SCOPE
+22bc1d4900a3   bridge     bridge    local
+ac887d218956   host       host      local
+ba02630dcb1b   javaguru   bridge    local
+806a6de979d5   none       null      local
 
-Да есть! Это Spring Profiles!
 
-Прочитайте про эту функциональность.
-Вот неплохая статья: https://www.baeldung.com/spring-profiles
+Для создания виртуальной сети используется команда:
 
-Ваша задача: с помощью файлов конфигурации настроить три Spring профайла:
-- для запуска приложения с H2 базой;
-- для запуска приложения локально с MySQL локальной базой;
-- для запуска приложения в контейнере с MySQL базой в другом контейнере;
+docker network create javaguru-network
 
-Для выбора Spring профайла используйте environment variable:
 
--Dspring.profiles.active=h2
--Dspring.profiles.active=mysql-local
--Dspring.profiles.active=mysql-container
+Для удаления виртуальной сети используется команда:
 
-Поднимите приложение с разными профайлами
-и проверьте что все работает корректно!
+docker network rm javaguru-network
+
+
+Verify the Container is Running and Connected to the Network:
+
+
+docker network inspect javaguru-network
+
+
+This command provides detailed information about the network,
+including which containers are connected to it.
+
+
+Ваша задача: создайте виртуальную сеть javaguru-network.
+В следующих заданиях мы будем использовать эту сеть для
+запуска контейнеров.

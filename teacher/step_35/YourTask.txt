@@ -1,11 +1,67 @@
-При вызове BlackList персона должна быть передана полностью,
-все поля обязательные, отсутствие любо из полей должно приводить к ошибке.
+Начнем с реализации самого простого требования.
+
+Персона находится в "черном списке" если полностью
+совпадают ее имя, фамилия и персональный код.
+
+Пример REST API:
+
+запрос:
+{
+      "person" :
+        {
+          "personFirstName" : "Vasja",
+          "personLastName" : "Pupkin",
+          "personCode" : "123456-12345"
+        }
+}
+
+ответ:
+{
+      "person" :
+        {
+          "personFirstName" : "Vasja",
+          "personLastName" : "Pupkin",
+          "personCode" : "123456-12345",
+          "blackListed" : true
+        }
+
+}
+
+Персона должна быть передана полностью, все поля обязательные,
+отсутствие любо из полей должно приводить к ошибке.
+
+
+ответ с ошибкой:
+{
+  "errors": [
+    {
+      "errorCode": "ERROR_CODE_1",
+      "description": "Field personFirstName must not be empty!"
+    }
+  ]
+}
 
 Коды ошибок:
 ERROR_CODE_1 - Field personFirstName must not be empty!
 ERROR_CODE_2 - Field personLastName must not be empty!
 ERROR_CODE_3 - Field personCode must not be empty!
 
-Ваша задача: создать в BlackList уровень бизнес логики
-(core команду, ответ, сервис, валидацию входных данных).
 
+REST API url: /blacklist/person/check  HTTP POST.
+
+
+Внутренняя модель данных.
+
+Начнем с простой реляционной базы данных с одной таблицей:
+BlackListedPersons
+- id
+- personFirstName
+- personLastName
+- personCode
+
+Если персона внесена в эту таблицу значит она в "черном списке".
+
+
+Ваша задача: создать отдельный модуль для микро сервиса
+black-list-app и реализовать в нем Data Access Layer (DAL)
+все что связано с базой данных (Liquibase, Entity, Repository).

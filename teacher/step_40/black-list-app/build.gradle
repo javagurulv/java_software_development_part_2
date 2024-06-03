@@ -60,12 +60,8 @@ clean.doFirst {
 	println "${projectDir}/logs/"
 }
 
-dockerPrepare {
-	dependsOn(tasks["bootJar"])
-}
-
 docker {
-	dependsOn(tasks["bootJar"])
+	dependsOn bootJar
 	name "black-list:1.0.2"
 	files 'build/libs/black-list-1.0.2.jar'
 	files 'wait-for-it.sh'

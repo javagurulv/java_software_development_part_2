@@ -1,34 +1,13 @@
-Внедряем Docker compose!
+Spring Default Profile!
 
-В предыдущих шагах нам удалось создать и запустить два Docker
-контейнера один с MySQL базой данных другой с Insurance Calculator.
+The spring.profiles.default property in Spring applications
+is used to specify the default profile(s) that should be active
+if no other profiles are activated through environment variables,
+JVM arguments, or other means. This property can be particularly
+useful for setting a base configuration that your application
+should run with under normal circumstances, while still allowing
+you to override it with specific profiles for different environments
+(e.g., development, test, production).
 
-Контейнеры мы создавали и запускали отдельно друг от друга.
-Когда контейнеров становится больше одного такой способ работы
-с ними становится не очень удобным.
-
-Хочется одной командой запустить сразу все контейнеры!
-
-И это возможно сделать!
-
-Для этого давайте внедрим в наш проект Docker compose.
-
-Docker compose - это инструмент позволяющий сконфигурировать
-и запускать сразу несколько Docker контейнеров.
-
-Ваша задача: создайте в корне проекта файл docker-compose.yaml.
-Добавьте в него конфигурацию сети: javaguru.
-Добавьте в него конфигурацию контейнера с MySQL сервером и базой данных.
-Добавьте в него конфигурацию контейнера с приложением Insurance Calculator.
-
-Запустите оба контейнера одной командой:
-docker-compose up -d
-docker-compose up
-PS: проверьте на практике чем отличаются эти две команды друг от друга.
-
-PS: если при выполнении docker-compose up будет падать Insurance Calculator
-из-за того что не может подключиться к базе данных это ок, переходите
-к следующему шагу, там будет объяснение и решение этой проблемы.
-
-Для остановки всех контейнеров одной командой выполните:
-docker-compose down
+Ваша задача: установите дефолтный профайл с H2 базой
+как для приложения, так и для тестов.

@@ -25,7 +25,7 @@ class ProposalGeneratorQueueSenderImpl implements ProposalGeneratorQueueSender {
         try {
             String json = objectMapper.writeValueAsString(agreement);
             logger.info("PROPOSAL GENERATION message content: " + json);
-            rabbitTemplate.convertAndSend(RabbitMQConfig.QUEUE_PROPOSAL_GENERATION, json);
+            rabbitTemplate.convertAndSend("q.proposal-generation", json);
         } catch (JsonProcessingException e) {
             logger.error("Error to convert agreement to JSON", e);
         } catch (AmqpException e) {
